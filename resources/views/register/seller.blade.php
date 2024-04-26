@@ -9,14 +9,31 @@
     <title>Document</title>
 </head>
 <body>
-<h1 class="text-success-emphasis shadow-sm m-4 bc mb-5">LOGIN FORM</h1>
-<form action="{{ route('login.check') }}" method="post" class="m-4 bc">
+<h1 class="text-success-emphasis shadow-sm m-4 bc mb-5">REGISTER FORM</h1>
+<form action="{{ route('seller.register.check') }}" method="post" class="m-4 bc">
     @csrf
+
+    <div class="mb-4">
+        <label for="name" class="form-label">name</label>
+        <input type="text" name="name" value="{{old('name')}}" id="name" class="form-control shadow-sm  bg-light bg-opacity-75">
+        @error('name')
+        <div class="text-danger">{{$message}}</div>
+        @enderror
+    </div>
 
     <div class="mb-4">
         <label for="email" class="form-label">email</label>
         <input type="text" name="email" value="{{old('email')}}" id="email" class="form-control shadow-sm  bg-light bg-opacity-75">
         @error('email')
+        <div class="text-danger">{{$message}}</div>
+        @enderror
+    </div>
+
+
+    <div class="mb-4">
+        <label for="phone" class="form-label">phone</label>
+        <input type="text" name="phone" value="{{old('phone')}}" id="email" class="form-control shadow-sm  bg-light bg-opacity-75">
+        @error('phone')
         <div class="text-danger">{{$message}}</div>
         @enderror
     </div>
@@ -30,8 +47,10 @@
     </div>
 
     <div class="mb-4">
-        <input type="submit" name="register" id="create" class="btn form-control btn-light btn-outline-warning shadow-sm">
+        <input type="submit" name="register" value="Register" id="create" class="btn form-control btn-light btn-outline-warning shadow-sm">
     </div>
 </form>
 </body>
 </html>
+
+

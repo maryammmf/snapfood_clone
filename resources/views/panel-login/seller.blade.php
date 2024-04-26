@@ -10,7 +10,7 @@
 </head>
 <body>
 <h1 class="text-success-emphasis shadow-sm m-4 bc mb-5">LOGIN FORM</h1>
-<form action="{{ route('login.check') }}" method="post" class="m-4 bc">
+<form action="{{ route('seller.login.check') }}" method="post" class="m-4 bc">
     @csrf
 
     <div class="mb-4">
@@ -30,7 +30,7 @@
     </div>
 
     <div class="mb-4">
-        <input type="submit" name="register" id="create" class="btn form-control btn-light btn-outline-warning shadow-sm">
+        <input type="submit" name="login" value="Login" id="create" class="btn form-control btn-light btn-outline-warning shadow-sm">
     </div>
 </form>
 </body>

@@ -4,6 +4,7 @@
             <h4 class="card-title">اصلاح کردن دسته بندی غذا</h4>
 
             <form class="forms-sample" action="{{ route('update.category.food' , $id) }}" method="post">
+                @method('PUT')
                 @csrf
                 <div class="form-group">
                     <label for="name">نام</label>

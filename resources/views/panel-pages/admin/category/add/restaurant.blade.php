@@ -37,7 +37,7 @@
             </form>
 
             <div><br>
-                <a href="{{ route('show.category.restaurant') }}">نمایش تمام دسته نبدی ها</a>
+                <a href="{{ route('index.category.restaurant') }}">نمایش تمام دسته نبدی ها</a>
             </div>
         </div>
     </div>

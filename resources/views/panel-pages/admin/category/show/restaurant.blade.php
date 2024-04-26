@@ -42,7 +42,15 @@
             <td>{{$category->created_at}}</td>
             <td>
                 <ul>
-                    <li><a href="{{ route('delete.category.restaurant' , $category->id) }}">Delete</a></li>
+{{--                    <li><a href="{{ route('delete.category.restaurant' , $category->id) }}">Delete</a></li>--}}
+                    <li>
+                        <form action="{{ route('delete.category.restaurant' , $category->id)}}" method="post">
+                            @method('DELETE')
+                            @csrf
+                            {{--                            <input type="hidden" value="{{ $category->id }}" name="id">--}}
+                            <input type="submit" value="Delete" >
+                        </form>
+                    </li>
                     <li><a href="{{ route('edit.category.restaurant' , $category->id) }}">Edit</a></li>
                 </ul>
             </td>

@@ -4,6 +4,8 @@ use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminFoodCategoryController;
 use App\Http\Controllers\Admin\AdminRestaurantCategoryController;
+use App\Http\Controllers\RestaurantController;
+use App\Http\Controllers\SellerAuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,84 +18,83 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 Route::get('/', function () {
     return view('main');
 });
 
 
+//-------------------------------  admin login  -------------------------------------------------
 
-Route::get('panel-login/admin' , [AdminAuthController::class , 'login'])
-    ->name('panel-login.admin');
+//admin login and check
+Route::prefix('auth')
+    ->controller(AdminAuthController::class)
+    ->group(function (){
+    Route::prefix('login')
+        ->name('login.')
+        ->group(function (){
+        Route::get('/' , 'login')->name('show');
+        Route::post('/' , 'submitLogin')->name('check');
+        Route::get('/logout' , 'logout')->name('logout');
+    });
+});
 
 
-Route::post('panel-login/login' , [AdminAuthController::class , 'submitLogin'])
-    ->name('panel-login.check');
-
-
+//admin panel
 Route::get('panel_admin' , function (){
     return view('adminMain');
-})->name('panel-login.panel');
+})->name('panel-login.admin');
+
+//----------------------------------  categry  -----------------------------------------------------
+
+//category.food
+Route::resource('panel_admin/category/food' , AdminFoodCategoryController::class)
+    ->names([
+        'create' => 'create.category.food',
+        'store' => 'store.category.food',
+        'index' => 'index.category.food',
+        'edit' => 'edit.category.food',
+        'update' => 'update.category.food',
+        'destroy' => 'delete.category.food',
+    ])->except('show');
+
+//category.restaurant
+Route::resource('panel_admin/category/restaurant' , AdminRestaurantCategoryController::class)
+    ->middleware('auth:admin')
+    ->names([
+        'create' => 'create.category.restaurant',
+        'store' => 'store.category.restaurant',
+        'index' => 'index.category.restaurant',
+        'edit' => 'edit.category.restaurant',
+        'update' => 'update.category.restaurant',
+        'destroy' => 'delete.category.restaurant',
+    ])->except('show');
+
+//--------------------------------------  seller  -----------------------------------------------
+
+//seller register
+Route::prefix('auth')->controller(SellerAuthController::class)->group(function (){
+    Route::prefix('seller/register')->name('seller.register.')->group(function(){
+        Route::get('/' , 'showRegister')->name('show');
+        Route::post('/' , 'submitRegister')->name('check');
+    });
+});
+
+//seller login
+Route::prefix('auth')->controller(SellerAuthController::class)->group(function (){
+    Route::prefix('seller/login')->name('seller.login.')->group(function(){
+        Route::get('/' , 'showLogin')->name('show');
+        Route::post('/' , 'submitLogin')->name('check');
+    });
+});
+
+//---------------------------------  restaurant  ----------------------------------------------------
+
+//restaurant register
+Route::prefix('auth')->controller(RestaurantController::class)->group(function (){
+    Route::prefix('restaurant/register')->name('restaurant.register.')->group(function(){
+        Route::get('/' , 'create')->name('show');
+        Route::post('/' , 'store')->name('store');
+    });
+});
 
 
-Route::get('panel_admin/category/food' , function (){
-    return view('panel-pages.admin.category.add.food');
-})
-    ->name('panel-login.category.food');
-
-
-Route::get('panel_admin/category/restaurant' , function (){
-    return view('panel-pages.admin.category.add.restaurant');
-})
-    ->name('panel-login.category.restaurant');
-
-
-//category/restaurant
-Route::post('panel_admin/category/restaurant' , [AdminRestaurantCategoryController::class , 'store'])
-    ->name('store.category.restaurant');
-
-Route::get('panel_admin/category/restaurant/show' , [AdminRestaurantCategoryController::class , 'index'])
-    ->name('show.category.restaurant');
-
-
-
-Route::get('panel_admin/category/restaurant/edit/{id}' , [AdminRestaurantCategoryController::class , 'edit'])
-    ->name('edit.category.restaurant');
-
-Route::post('panel_admin/category/restaurant/update/{id}' , [AdminRestaurantCategoryController::class , 'update'])
-    ->name('update.category.restaurant');
-
-Route::get('panel_admin/category/restaurant/delete/{id}' , [AdminRestaurantCategoryController::class , 'destroy'])
-    ->name('delete.category.restaurant');
-
-
-
-//category/food
-Route::post('panel_admin/category/food' , [AdminFoodCategoryController::class , 'store'])
-    ->name('store.category.food');
-
-Route::get('panel_admin/category/food/show' , [AdminFoodCategoryController::class , 'index'])
-    ->name('show.category.food');
-
-
-
-Route::get('panel_admin/category/food/edit/{id}' , [AdminFoodCategoryController::class , 'edit'])
-    ->name('edit.category.food');
-
-Route::post('panel_admin/category/food/update/{id}' , [AdminFoodCategoryController::class , 'update'])
-    ->name('update.category.food');
-
-Route::get('panel_admin/category/food/delete/{id}' , [AdminFoodCategoryController::class , 'destroy'])
-    ->name('delete.category.food');
-
-
-
-
-
-//Route::prefix('panel-login')
-//    ->middleware('auth:panel-login')
-//    ->controller(AdminAuthController::class)
-//    ->name('panel-login.')
-//    ->group(function (){
-//    Route::post('/check' , 'submiteLogin')->name('check');
-//});

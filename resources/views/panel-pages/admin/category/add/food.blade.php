@@ -27,7 +27,7 @@
     <div class="card mt-5">
         <div class="card-body">
             <h4 class="card-title">افزودن دسته بندی جدید به غذا ها</h4>
-            <form class="forms-sample" action="" method="post">
+            <form class="forms-sample" action="{{ route('store.category.food') }}" method="post">
                 @csrf
                 <div class="form-group">
                     <label for="name">نام</label>
@@ -36,7 +36,7 @@
                 <button type="submit" class="btn btn-primary mr-2"> افزودن </button>
             </form>
             <div><br>
-                <a href="{{ route('show.category.food') }}">نمایش تمام دسته نبدی ها</a>
+                <a href="{{ route('index.category.food') }}">نمایش تمام دسته نبدی ها</a>
             </div>
         </div>
     </div>

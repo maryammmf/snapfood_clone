@@ -39,10 +39,10 @@
             <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('panel-login.category.restaurant') }}">رستوران</a>
+                        <a class="nav-link" href="{{ route('create.category.restaurant') }}">رستوران</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('panel-login.category.food') }}">غذا</a>
+                        <a class="nav-link" href="{{ route('create.category.food') }}">غذا</a>
                     </li>
 {{--                    <li class="nav-item">--}}
 {{--                        <a class="nav-link" href="pages/ui-features/typography.html">Typography</a>--}}

@@ -41,9 +41,14 @@ return [
             'provider' => 'users',
         ],
 
-        'panel-login' => [
+        'admin' => [
             'driver' => 'session',
-            'provider' => 'panel-login',
+            'provider' => 'admins',
+        ],
+
+        'seller' => [
+            'driver' => 'session',
+            'provider' => 'sellers',
         ],
     ],
 
@@ -70,9 +75,14 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        'panel-login' => [
+        'admins' => [
             'driver' => 'eloquent',
             'model' => \App\Models\Admin\Admin::class,
+        ],
+
+        'sellers' => [
+            'driver' => 'eloquent',
+            'model' => \App\Models\Seller::class,
         ],
 
         // 'users' => [

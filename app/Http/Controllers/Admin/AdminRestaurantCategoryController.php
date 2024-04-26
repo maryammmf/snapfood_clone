@@ -9,6 +9,7 @@ use App\Models\Admin\RestaurantCategory;
 
 class AdminRestaurantCategoryController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      */
@@ -23,7 +24,7 @@ class AdminRestaurantCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('panel-pages.admin.category.add.restaurant');
     }
 
     /**
@@ -32,17 +33,10 @@ class AdminRestaurantCategoryController extends Controller
     public function store(AddCategoryRequest $request)
     {
         RestaurantCategory::query()->create($request->validated());
-        return back()->with('message added');
+        return 'Done';
 
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -61,7 +55,7 @@ class AdminRestaurantCategoryController extends Controller
         $findRestaurant->update([
             'name'=>$request->name,
         ]);
-        return redirect(route('show.category.restaurant'));
+        return redirect(route('index.category.restaurant'));
 
     }
 
@@ -72,6 +66,6 @@ class AdminRestaurantCategoryController extends Controller
     {
         $restaurant = RestaurantCategory::query()->findOrFail($id);
         $restaurant->delete();
-        return redirect(route('show.category.restaurant'));
+        return redirect(route('index.category.restaurant'));
     }
 }

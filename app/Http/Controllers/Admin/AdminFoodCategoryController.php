@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\AddCategoryRequest;
+use App\Http\Requests\Admin\DeleteFoodCategoryRequest;
 use App\Models\Admin\FoodCategory;
 use App\Models\Admin\RestaurantCategory;
 use Illuminate\Http\Request;
@@ -17,6 +18,14 @@ class AdminFoodCategoryController extends Controller
     {
         $categories =  FoodCategory::all();
         return view('panel-pages.admin.category.show.food' , compact('categories'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        return view('panel-pages.admin.category.add.food');
     }
 
 
@@ -47,7 +56,7 @@ class AdminFoodCategoryController extends Controller
         $findFood->update([
             'name'=>$request->name,
         ]);
-        return redirect(route('show.category.food'));
+        return redirect(route('index.category.food'));
 
     }
 
@@ -56,9 +65,15 @@ class AdminFoodCategoryController extends Controller
      */
     public function destroy(int $id)
     {
-
         $food = FoodCategory::query()->findOrFail($id);
         $food->delete();
-        return redirect(route('show.category.food'));
+        return redirect(route('index.category.food'));
     }
+
+//    public function destroy(DeleteFoodCategoryRequest $request )
+//    {
+//        dd($request);
+//        FoodCategory::query()->delete();
+//        dd('ff');
+//    }
 }
