@@ -82,7 +82,7 @@ return [
 
         'sellers' => [
             'driver' => 'eloquent',
-            'model' => \App\Models\Seller::class,
+            'model' => \App\Models\seller\Seller::class,
         ],
 
         // 'users' => [

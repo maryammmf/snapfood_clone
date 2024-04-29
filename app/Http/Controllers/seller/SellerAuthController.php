@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\seller;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\seller\SubmitLoginRequest;
 use App\Http\Requests\seller\SubmitRegisterRequest;
-use App\Models\Restaurant;
-use App\Models\Seller;
-use Illuminate\Http\Request;
+use App\Models\seller\Seller;
 use Illuminate\Support\Facades\Auth;
 
 class SellerAuthController extends Controller

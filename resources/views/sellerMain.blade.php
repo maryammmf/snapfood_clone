@@ -1,5 +1,5 @@
-@extends('layouts.adminMaster' )
-@section('panel-login.content')
+@extends('layouts.sellerMaster' )
+@section('panel-seller.content')
     <div class="main-panel">
         <div class="content-wrapper pb-0">
             <div class="page-header flex-wrap">

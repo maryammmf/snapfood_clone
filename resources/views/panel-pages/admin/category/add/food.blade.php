@@ -1,5 +1,5 @@
 @extends('layouts.adminMaster')
-@section('panel-login.content')
+@section('panel-admin.content')
 {{--@dd(__DIR__)--}}
     <!DOCTYPE html>
 <html lang="en">
@@ -22,8 +22,12 @@
     <link rel="shortcut icon" href="../../assets/images/favicon.png" />
 </head>
 <body>
+{{--action="{{ route('store.category.food') }}"--}}
+{{--<a href="{{ route('index.category.food') }}">نمایش تمام دسته نبدی ها</a>--}}
 
-<div class="col-12 grid-margin stretch-card mt-5" style="height: 300px">
+
+
+<div class="col-12 grid-margin stretch-card mt-5 " style="height: 300px">
     <div class="card mt-5">
         <div class="card-body">
             <h4 class="card-title">افزودن دسته بندی جدید به غذا ها</h4>
@@ -35,12 +39,14 @@
                 </div>
                 <button type="submit" class="btn btn-primary mr-2"> افزودن </button>
             </form>
+
             <div><br>
                 <a href="{{ route('index.category.food') }}">نمایش تمام دسته نبدی ها</a>
             </div>
         </div>
     </div>
 </div>
+
 
 <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
 <script src="../../assets/vendors/select2/select2.min.js"></script>

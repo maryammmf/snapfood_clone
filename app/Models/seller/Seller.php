@@ -1,19 +1,18 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\seller;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Restaurant extends Model
+class Seller extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'name',
-        'restaurant_category_id',
-        'number',
-        'address',
-        'bank_info',
+        'email',
+        'phone',
+        'password',
     ];
 }

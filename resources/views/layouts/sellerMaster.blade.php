@@ -15,7 +15,7 @@
 </head>
 <body>
 <div class="container-scroller">
-    @include('partial.slidebar.admin')
+    @include('partial.slidebar.seller')
     <div class="container-fluid page-body-wrapper">
         <div id="theme-settings" class="settings-panel">
             <i class="settings-close mdi mdi-close"></i>
@@ -33,7 +33,7 @@
             </div>
         </div>
         @include('partial.header')
-        @yield('panel-admin.content')
+        @yield('panel-seller.content')
         @include('partial.footer')
     </div>
     <!-- main-panel ends -->

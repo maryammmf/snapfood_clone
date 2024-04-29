@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\seller;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Restaurant\RegisterRequest;
 use App\Models\Admin\RestaurantCategory;
-use App\Models\Restaurant;
+use App\Models\seller\Restaurant;
 use Illuminate\Http\Request;
 
 class RestaurantController extends Controller
@@ -32,10 +33,10 @@ class RestaurantController extends Controller
      */
     public function store(RegisterRequest $request)
     {
-
         Restaurant::query()->create($request->validated());
-        return 'Done';
+        return redirect(route('panel-login.seller'));
     }
+
 
     /**
      * Display the specified resource.
