@@ -9,7 +9,7 @@
     <title>Document</title>
 </head>
 <body>
-<h1 class="text-success-emphasis shadow-sm m-4 bc mb-5">LOGIN FORM</h1>
+<h1 class="text-success-emphasis shadow-sm m-4 bc mb-5">LOGIN SELLER FORM</h1>
 <form action="{{ route('seller.login.check') }}" method="post" class="m-4 bc">
     @csrf
 

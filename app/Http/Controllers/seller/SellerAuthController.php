@@ -7,6 +7,7 @@ use App\Http\Requests\seller\SubmitLoginRequest;
 use App\Http\Requests\seller\SubmitRegisterRequest;
 use App\Models\seller\Seller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class SellerAuthController extends Controller
 {
@@ -15,8 +16,10 @@ class SellerAuthController extends Controller
     }
 
     public function submitRegister(SubmitRegisterRequest $request){
-        Seller::query()->create($request->validated());
-        return redirect(route('restaurant.register.show'));
+        $validated = $request->validated();
+        $validated['password']=Hash::make($validated['password']);
+        Seller::query()->create($validated);
+        return redirect(route('restaurant.create'));
     }
 
 
@@ -27,7 +30,7 @@ class SellerAuthController extends Controller
     public function submitLogin(SubmitLoginRequest $request){
         if (Auth::guard('seller')->attempt($request->validated())){
             $request->session()->regenerate();
-            return redirect(route('seller.login.show'));
+            return redirect(route('panel.seller'));
         }
         return back()->withErrors([
             'message'=>'اطلاعات وارد شده صحیح نمی باشد.'
@@ -35,6 +38,9 @@ class SellerAuthController extends Controller
     }
 
     public function logout(){
-
+        Auth::guard('seller')->logout();
+        return redirect(route('seller.login.show'));
     }
+
+
 }

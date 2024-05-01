@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Http\Requests\Restaurant;
+namespace App\Http\Requests\seller\Restaurant;
 
-use App\Models\Admin\RestaurantCategory;
 use Illuminate\Foundation\Http\FormRequest;
 
 class RegisterRequest extends FormRequest
@@ -28,6 +27,7 @@ class RegisterRequest extends FormRequest
             'address' => ['required'],
             'bank_info' => ['required'],
             'restaurant_category_id' => ['required'],
+            'seller_id' => ['required'],
         ];
 
     }

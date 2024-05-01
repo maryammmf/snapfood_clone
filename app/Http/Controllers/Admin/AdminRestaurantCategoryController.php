@@ -33,7 +33,7 @@ class AdminRestaurantCategoryController extends Controller
     public function store(AddCategoryRequest $request)
     {
         RestaurantCategory::query()->create($request->validated());
-        return 'Done';
+        return back();
 
     }
 

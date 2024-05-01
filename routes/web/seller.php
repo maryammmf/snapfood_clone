@@ -7,21 +7,19 @@ use Illuminate\Support\Facades\Route;
 
 
 
-//seller register
+//seller register and login and logout
 Route::prefix('auth')->controller(SellerAuthController::class)->group(function (){
     Route::prefix('seller/register')->name('seller.register.')->group(function(){
         Route::get('/' , 'showRegister')->name('show');
         Route::post('/' , 'submitRegister')->name('check');
     });
-});
 
-
-//seller login
-Route::prefix('auth')->controller(SellerAuthController::class)->group(function (){
     Route::prefix('seller/login')->name('seller.login.')->group(function(){
         Route::get('/' , 'showLogin')->name('show');
         Route::post('/' , 'submitLogin')->name('check');
     });
+
+    Route::get('/seller' , 'logout')->name('seller.logout');
 });
 
 
@@ -30,12 +28,14 @@ Route::prefix('auth')->controller(SellerAuthController::class)->group(function (
 //seller panel ---------------------
 Route::get('panel_seller' , function (){
     return view('sellerMain');
-})->name('panel-login.seller');
+})->name('panel.seller');
 
 
 
 //food crud
-Route::resource('panel_seller/food' , FoodController::class)->except('show' , 'destroy');
+Route::resource('panel_seller/food' , FoodController::class)
+    ->except('show' , 'destroy');
+//    ->middleware('auth:seller');
 Route::delete('panel_seller/food' , [FoodController::class ,'destroy'])->name('food.destroy');
 
 
@@ -46,4 +46,4 @@ Route::prefix('panel_seller/food/find')
     ->name('find.food.by.')->group(function (){
         Route::get('/' , 'searchByName')->name('name');
         Route::post('/' , 'searchByCategory')->name('category');
-});
+})->middleware('auth:seller');

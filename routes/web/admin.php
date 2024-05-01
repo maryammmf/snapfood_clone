@@ -6,8 +6,6 @@ use App\Http\Controllers\Admin\AdminRestaurantCategoryController;
 use Illuminate\Support\Facades\Route;
 
 
-
-
 //-------------------------------  admin login  -------------------------------------------------
 
 //admin login and check

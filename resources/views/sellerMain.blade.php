@@ -416,7 +416,7 @@
                                 <div class="col-sm-7">
                                     <div class="row">
                                         <div class="col-4 col-sm-4">
-                                            <img class="customer-img" src="assets/images/faces/face2.jpg" alt="" />
+                                            <img class="customer-img" src="/assets/images/faces/face2.jpg" alt="" />
                                         </div>
                                         <div class="col-8 col-sm-8 p-sm-0">
                                             <h6 class="mb-0">Harry Holloway</h6>
@@ -598,7 +598,7 @@
                                     <div class="col-7 col-sm-8">
                                         <div class="row align-items-center">
                                             <div class="col-sm-4">
-                                                <img src="assets/images/faces/face2.jpg" alt="" />
+                                                <img src="/assets/images/faces/face2.jpg" alt="" />
                                             </div>
                                             <div class="col-sm-8 pr-0 pl-sm-0">
                                                 <span>06 Jan 2019</span>
@@ -630,7 +630,7 @@
                                     <div class="col-7 col-sm-8">
                                         <div class="row align-items-center">
                                             <div class="col-sm-4">
-                                                <img src="assets/images/faces/face3.jpg" alt="" />
+                                                <img src="/assets/images/faces/face3.jpg" alt="" />
                                             </div>
                                             <div class="col-sm-8 pr-0 pl-sm-0">
                                                 <span>18 Mar 2019</span>
@@ -694,7 +694,7 @@
                                     <div class="col-7 col-sm-8">
                                         <div class="row align-items-center">
                                             <div class="col-sm-4">
-                                                <img src="assets/images/faces/face3.jpg" alt="" />
+                                                <img src="/assets/images/faces/face3.jpg" alt="" />
                                             </div>
                                             <div class="col-sm-8 pr-0 pl-sm-0">
                                                 <span>18 Mar 2019</span>

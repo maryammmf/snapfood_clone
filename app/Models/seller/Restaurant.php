@@ -15,5 +15,6 @@ class Restaurant extends Model
         'number',
         'address',
         'bank_info',
+        'seller_id',
     ];
 }

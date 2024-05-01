@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\seller;
+namespace App\Http\Requests\seller\restaurant;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SubmitRegisterRequest extends FormRequest
+class UpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,10 +22,12 @@ class SubmitRegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required' , 'string'],
-            'email' => ['required' , 'email' , 'unique:sellers'],
-            'phone' => ['required' , 'integer' ],
-            'password' => ['required' , 'string'],
+            'name' => ['required'],
+            'number' => ['required' ],
+            'address' => ['required'],
+            'bank_info' => ['required'],
+            'restaurant_category_id' => ['required'],
+//            'seller_id' => ['required'],
         ];
     }
 }

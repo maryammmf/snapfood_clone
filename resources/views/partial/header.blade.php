@@ -23,7 +23,7 @@
                     </a>
                     <a class="dropdown-item preview-item">
                         <div class="preview-thumbnail">
-                            <img src="assets/images/faces/face3.jpg" alt="" class="profile-pic" />
+                            <img src="/assets/images/faces/face3.jpg" alt="" class="profile-pic" />
                         </div>
                         <div class="preview-item-content">
                             <p class="mb-0"> James <span class="text-small text-muted">posted a photo on your wall</span>
@@ -100,7 +100,7 @@
             </li>
             <li class="nav-item nav-profile dropdown border-0">
                 <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown">
-                    <img class="nav-profile-img mr-2" alt="" src="assets/images/faces/face1.jpg" />
+                    <img class="nav-profile-img mr-2" alt="" src="/assets/images/faces/face1.jpg" />
                     <span class="profile-name">Henry Klein</span>
                 </a>
                 <div class="dropdown-menu navbar-dropdown w-100" aria-labelledby="profileDropdown">

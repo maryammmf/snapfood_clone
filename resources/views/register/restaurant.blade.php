@@ -9,10 +9,11 @@
     <title>Document</title>
 </head>
 <body>
+
 <h1 class="text-success-emphasis shadow-sm m-4 bc mb-5">REGISTER RESTAURANT FORM</h1>
 
 
-<form action="{{ route('restaurant.register.store') }}" method="post" class="m-4 bc">
+<form action="{{ route('restaurant.store') }}" method="post" class="m-4 bc">
     @csrf
     <div class="mb-4">
         <label for="name" class="form-label">name</label>
@@ -33,7 +34,7 @@
 
     <div class="mb-4">
         <label for="address" class="form-label ">address</label>
-        <input type="text" name="address" id="address" class="form-control shadow-sm bg-light bg-opacity-75">{{old('address')}}
+        <input type="text" name="address" id="address" value="{{old('address')}}" class="form-control shadow-sm bg-light bg-opacity-75">
         @error('address')
         <div class="text-danger">{{$message}}</div>
         @enderror
@@ -41,7 +42,7 @@
 
     <div class="mb-4">
         <label for="bank_info" class="form-label ">bank info</label>
-        <input type="text" name="bank_info" id="bank_info" class="form-control shadow-sm bg-light bg-opacity-75">{{old('bank_info')}}
+        <input type="text" name="bank_info" id="bank_info" value="{{old('bank_info')}}" class="form-control shadow-sm bg-light bg-opacity-75">
         @error('bank_info')
         <div class="text-danger">{{$message}}</div>
         @enderror

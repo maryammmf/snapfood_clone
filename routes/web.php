@@ -31,11 +31,12 @@ require_once 'web/seller.php';
 //---------------------------------  restaurant  ----------------------------------------------------
 
 //restaurant register
-Route::prefix('auth')->controller(RestaurantController::class)->group(function (){
-    Route::prefix('restaurant/register')->name('restaurant.register.')->group(function(){
-        Route::get('/' , 'create')->name('show');
-        Route::post('/' , 'store')->name('store');
-    });
-});
+//Route::prefix('auth')->controller(RestaurantController::class)->group(function (){
+//    Route::prefix('restaurant/register')->name('restaurant.register.')->group(function(){
+//        Route::get('/' , 'create')->name('show');
+//        Route::post('/' , 'store')->name('store');
+//    });
+//});
 
-
+Route::resource('panel_seller/restaurant' , RestaurantController::class)->except('show');
+//Route::delete('panel_seller/restaurant' , [RestaurantController::class , 'destroy'])->name('restaurant.destroy');

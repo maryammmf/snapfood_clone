@@ -5,14 +5,14 @@
 </style>
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <div class="text-center sidebar-brand-wrapper d-flex align-items-center">
-        <a class="sidebar-brand brand-logo" href="index.html"><img src="assets/images/logo.svg" alt="logo" /></a>
-        <a class="sidebar-brand brand-logo-mini pl-4 pt-3" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
+        <a class="sidebar-brand brand-logo" href="index.html"><img src="/assets/images/logo.svg" alt="logo" /></a>
+        <a class="sidebar-brand brand-logo-mini pl-4 pt-3" href="index.html"><img src="/assets/images/logo-mini.svg" alt="logo" /></a>
     </div>
     <ul class="nav">
         <li class="nav-item nav-profile">
             <a href="#" class="nav-link">
                 <div class="nav-profile-image">
-                    <img src="assets/images/faces/face1.jpg" alt="profile" />
+                    <img src="/assets/images/faces/face1.jpg" alt="profile" />
                     <span class="login-status online"></span>
                     <!--change to offline or busy as needed-->
                 </div>
@@ -77,7 +77,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="pages/forms/basic_elements.html">
+            <a class="nav-link" href="{{route('restaurant.index')}}">
                 <i class="mdi mdi-format-list-bulleted menu-icon"></i>
                 <span class="menu-title">ویرایش اطلاعات رستوران</span>
             </a>
@@ -102,7 +102,7 @@
                         <p class="text-black">پیامها</p>
                     </div>
                     <ul class="mt-4 pl-0">
-                        <li>خروج</li>
+                        <li><a href="{{ route('seller.logout') }}">خروج</a></li>
                     </ul>
                 </div>
             </div>
