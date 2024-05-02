@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\seller\food\AddFoodRequest;
 use App\Http\Requests\seller\food\DeleteFoodRequest;
 use App\Http\Requests\seller\food\UpdateFoodRequest;
+use App\Models\Admin\Discount;
 use App\Models\Admin\FoodCategory;
 use App\Models\seller\Food;
 use Illuminate\Http\Request;
@@ -17,9 +18,10 @@ class FoodController extends Controller
      */
     public function index()
     {
-        $foods = Food::query()->paginate(1);
+        $discounts = Discount::all();
+        $foods = Food::query()->paginate(2);
         $foodCategories = FoodCategory::all();
-        return view('panel-pages.seller.foods.index' , compact('foods' , 'foodCategories'));
+        return view('panel-pages.seller.foods.index' , compact('foods' , 'foodCategories' , 'discounts'));
     }
 
     /**
@@ -28,7 +30,8 @@ class FoodController extends Controller
     public function create()
     {
         $foodCategories = FoodCategory::all();
-        return view('panel-pages.seller.foods.add' , compact('foodCategories'));
+        $discounts = Discount::all();
+        return view('panel-pages.seller.foods.add' , compact('foodCategories' , 'discounts'));
     }
 
     /**

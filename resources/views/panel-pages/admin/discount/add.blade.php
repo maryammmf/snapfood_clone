@@ -1,7 +1,7 @@
-@extends('layouts.sellerMaster')
-@section('panel-seller.content')
-{{--@dd(__DIR__)--}}
-    <!DOCTYPE html>
+@extends('layouts.adminMaster')
+@section('panel-admin.content')
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <style>
@@ -26,9 +26,9 @@
 <div class="col-12 grid-margin stretch-card mt-5" style="height: 600px">
     <div class="card mt-5">
         <div class="card-body">
-            <h4 class="card-title">افزودن غذای جدید</h4>
+            <h4 class="card-title">افزودن تخفیف جدید</h4>
 
-            <form class="forms-sample" action="{{ route('food.store') }}" method="post">
+            <form class="forms-sample" action="{{ route('discount.store') }}" method="post">
                 @csrf
 
                 <div class="form-group">
@@ -37,45 +37,26 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="material">مواد اولیه</label>
-                    <input type="text" name="material" class="form-control" id="material">
+                    <label for="code">کد تخفیف</label>
+                    <input type="text" name="code" class="form-control" id="code">
                 </div>
 
                 <div class="form-group">
-                    <label for="price">قیمت</label>
-                    <input type="text" name="price" class="form-control" id="price">
+                    <label for="amount">مبلغ تخفیف</label>
+                    <input type="text" name="amount" class="form-control" id="amount">
                 </div>
 
                 <div class="form-group">
-                    <label for="photo">عکس</label>
-                    <input type="text" name="photo" class="form-control" id="photo">
+                    <label for="expired_at">تاریخ انقضا</label>
+                    <input type="date" name="expired_at" class="form-control" id="expired_at">
                 </div>
 
-                <div class="form-group">
-                    <label for="food_category_id">دسته بندی</label>
-                    <select name="food_category_id" id="food_category_id">
-                        <option value="" selected disabled>انتخاب کنید</option>
-                        @foreach($foodCategories as $foodCategory)
-                        <option value="{{ $foodCategory->id }}">{{ $foodCategory->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="discount">تخفیف</label>
-                    <select name="discount" id="discount">
-                        <option value="" selected disabled>انتخاب کنید</option>
-                        @foreach($discounts as $discount)
-                        <option value="{{ $discount->id }}">{{ $discount->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
 
                 <button type="submit" class="btn btn-primary mr-2"> افزودن </button>
             </form>
 
             <div><br>
-                <a href="{{ route('food.index') }}">نمایش تمام غذا ها</a>
+                <a href="{{ route('discount.index') }}">نمایش تمام تخفیف ها</a>
             </div>
         </div>
     </div>

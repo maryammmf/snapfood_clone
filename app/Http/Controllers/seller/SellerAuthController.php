@@ -18,8 +18,9 @@ class SellerAuthController extends Controller
     public function submitRegister(SubmitRegisterRequest $request){
         $validated = $request->validated();
         $validated['password']=Hash::make($validated['password']);
-        Seller::query()->create($validated);
-        return redirect(route('restaurant.create'));
+        $seller = Seller::query()->create($validated);
+        $sellerId = $seller->id;
+        return redirect(route('restaurant.create' , ['sellerId' => $sellerId]));
     }
 
 

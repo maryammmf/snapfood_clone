@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\DiscountController;
 use App\Http\Controllers\seller\FindFoodController;
 use App\Http\Controllers\seller\FoodController;
 use App\Http\Controllers\seller\RestaurantController;
@@ -30,13 +31,12 @@ require_once 'web/seller.php';
 
 //---------------------------------  restaurant  ----------------------------------------------------
 
-//restaurant register
-//Route::prefix('auth')->controller(RestaurantController::class)->group(function (){
-//    Route::prefix('restaurant/register')->name('restaurant.register.')->group(function(){
-//        Route::get('/' , 'create')->name('show');
-//        Route::post('/' , 'store')->name('store');
-//    });
-//});
 
-Route::resource('panel_seller/restaurant' , RestaurantController::class)->except('show');
-//Route::delete('panel_seller/restaurant' , [RestaurantController::class , 'destroy'])->name('restaurant.destroy');
+Route::resource('panel_seller/restaurant' , RestaurantController::class)->except('show' , 'create');
+Route::get('panel_seller/restaurant/{sellerId}' , [RestaurantController::class , 'create'])->name('restaurant.create');
+
+
+//---------------------------------  discount  ----------------------------------------------------
+
+Route::resource('panel_admin/discount' , DiscountController::class)->only('index' , 'create' , 'store');
+Route::delete('panel_admin/discount' , [DiscountController::class , 'destroy'])->name('discount.destroy');

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\seller\Restaurant;
+namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RegisterRequest extends FormRequest
+class AddDiscountRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,12 +23,9 @@ class RegisterRequest extends FormRequest
     {
         return [
             'name' => ['required'],
-            'number' => ['required' ],
-            'address' => ['required'],
-            'bank_info' => ['required'],
-            'restaurant_category_id' => ['required'],
-            'seller_id' => ['required']
+            'code' => ['required'],
+            'amount' => ['required'],
+            'expired_at' => ['required' , 'date' , 'after:' . now() ],
         ];
-
     }
 }

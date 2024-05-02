@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminFoodCategoryController;
+use App\Models\Admin\Discount;
 use App\Models\Admin\FoodCategory;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -20,6 +21,7 @@ return new class extends Migration
             $table->string('price');
             $table->string('photo')->nullable();
             $table->foreignIdFor(FoodCategory::class)->constrained();
+            $table->foreignIdFor(Discount::class)->constrained();
             $table->timestamps();
         });
     }

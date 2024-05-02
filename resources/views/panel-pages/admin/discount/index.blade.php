@@ -1,5 +1,5 @@
-@extends('layouts.sellerMaster')
-@section('panel-seller.content')
+@extends('layouts.adminMaster')
+@section('panel-admin.content')
 
 <!DOCTYPE html>
 <html lang="en">
@@ -25,42 +25,32 @@
 <div class="col-lg-12 grid-margin stretch-card m">
     <div class="card">
         <div class="card-body" style="margin-right: 350px; margin-top: 100px">
-            <h4 class="card-title"> رستوران </h4>
+            <h4 class="card-title"> تخفیف </h4>
             <div class="table-responsive">
                 <table class="table table-striped">
                     <tr>
-                        <th>Name</th>
-                        <th>restaurant_category</th>
-                        <th>number</th>
-                        <th>address</th>
-                        <th>bank_info</th>
-                        <th>Creat Time</th>
-                        <th>Actions</th>
+                        <th>نام</th>
+                        <th>کد تخفیف</th>
+                        <th>مبلغ</th>
+                        <th>تاریخ انقضا</th>
+                        <th>اکشن</th>
+
                     </tr>
-                    @foreach($restaurants as $restaurant)
+                    @foreach($discounts as $discount)
                     <tr>
-                        <td>{{$restaurant->name}}</td>
-                        <td>{{$restaurant->restaurant_category_id}}</td>
-                        <td>{{$restaurant->number}}</td>
-                        <td>{{$restaurant->address}}</td>
-                        <td>{{$restaurant->bank_info}}</td>
-                        <td>{{$restaurant->created_at}}</td>
+                        <td>{{$discount->name}}</td>
+                        <td>{{$discount->code}}</td>
+                        <td>{{$discount->amount}}</td>
+                        <td>{{$discount->expired_at}}</td>
+
                         <td>
                             <ul>
                                 <li>
-                                    <form action="{{ route('restaurant.destroy' , $restaurant->id) }}" method="post">
+                                    <form action="{{ route('discount.destroy') }}" method="post">
                                         @method('DELETE')
                                         @csrf
-                                        <input type="hidden" value="{{ $restaurant->id }}" name="id">
+                                        <input type="hidden" value="{{ $discount->id }}" name="id">
                                         <input type="submit" value="Delete" >
-                                    </form>
-                                </li>
-                                <li>
-                                    <form action="{{ route('restaurant.edit' , $restaurant)}}" method="post">
-                                        @csrf
-                                        @method('GET')
-                                        <input type="hidden" value="{{ $restaurant->id }}" name="id">
-                                        <input type="submit" value="Edit" >
                                     </form>
                                 </li>
                             </ul>

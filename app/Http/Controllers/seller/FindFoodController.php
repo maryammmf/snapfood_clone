@@ -11,16 +11,17 @@ class FindFoodController extends Controller
 {
     public function searchByName(FindFoodByNameRequest $request){
         $validated = $request->validated();
-        $food = Food::query()->where('name' , $validated['name'])->first();
-        return view('panel-pages.seller.foods.showFind' , compact('food'));
+        $foods = Food::query()->where('name' , $validated['name'])->paginate(5);
+//        dd($foods);
+        return view('panel-pages.seller.foods.showFind' , compact('foods'));
     }
 
 
     public function searchByCategory(FindFoodByCategoryRquest $request){
         $validated = $request->validated();
-        $food = Food::query()->where('food_category_id' , $validated['food_category_id'])->first();
+        $foods = Food::query()->where('food_category_id' , $validated['food_category_id'])->paginate(5);
 //        dd($food);
-        return view('panel-pages.seller.foods.showFind' , compact('food'));
+        return view('panel-pages.seller.foods.showFind' , compact('foods'));
     }
 
 }

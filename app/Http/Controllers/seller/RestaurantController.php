@@ -19,8 +19,8 @@ class RestaurantController extends Controller
     public function index()
     {
         $userId = Auth::guard('seller')->id();
+//        dd($userId);
         $restaurants = Restaurant::query()->where('seller_id' , $userId)->get();
-//        dd($restaurant);
         return view('panel-pages.seller.restaurant.index' , compact('restaurants'));
     }
 
@@ -28,11 +28,10 @@ class RestaurantController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(int $sellerId)
     {
         $restaurantCategories = RestaurantCategory::all();
-//        dd($sellerId);
-        return view('register.restaurant' , compact('restaurantCategories'));
+        return view('register.restaurant' , compact('restaurantCategories' , 'sellerId'));
     }
 
     /**
@@ -40,8 +39,9 @@ class RestaurantController extends Controller
      */
     public function store(RegisterRequest $request)
     {
-        Restaurant::query()->create($request->validated());
-        return redirect(route('panel.seller'));
+        $validated = $request->validated();
+        Restaurant::query()->create($validated);
+        return redirect(route('seller.login.show'));
     }
 
 
@@ -60,7 +60,6 @@ class RestaurantController extends Controller
      */
     public function update(UpdateRequest $request, Restaurant $restaurant)
     {
-//        dd($restaurant);
         $validated = $request->validated();
         $validated['seller_id'] = Auth::guard('seller')->id();
         $restaurant->update($validated);
