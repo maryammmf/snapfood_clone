@@ -28,7 +28,7 @@
         <div class="card-body">
             <h4 class="card-title">افزودن غذای جدید</h4>
 
-            <form class="forms-sample" action="{{ route('food.store') }}" method="post">
+            <form class="forms-sample" action="{{ route('food.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
 
                 <div class="form-group">
@@ -48,7 +48,7 @@
 
                 <div class="form-group">
                     <label for="photo">عکس</label>
-                    <input type="text" name="photo" class="form-control" id="photo">
+                    <input type="file" name="photo" class="form-control" id="photo">
                 </div>
 
                 <div class="form-group">
@@ -62,8 +62,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="discount">تخفیف</label>
-                    <select name="discount" id="discount">
+                    <label for="discount_id">تخفیف</label>
+                    <select name="discount_id" id="discount_id">
                         <option value="" selected disabled>انتخاب کنید</option>
                         @foreach($discounts as $discount)
                         <option value="{{ $discount->id }}">{{ $discount->name }}</option>

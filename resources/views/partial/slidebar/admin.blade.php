@@ -96,7 +96,7 @@
                         <p class="text-black">پیامها</p>
                     </div>
                     <ul class="mt-4 pl-0">
-                        <li>خروج</li>
+                        <li><a href="{{ route('login.logout') }}">خروج</a></li>
                     </ul>
                 </div>
             </div>

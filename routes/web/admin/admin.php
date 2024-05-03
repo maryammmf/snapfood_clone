@@ -25,12 +25,14 @@ Route::prefix('auth')
 //admin panel
 Route::get('panel_admin' , function (){
     return view('adminMain');
-})->name('panel-login.admin');
+    })->middleware('auth:admin')
+    ->name('panel-login.admin');
 
 //----------------------------------  categry  -----------------------------------------------------
 
 //category.food
 Route::resource('panel_admin/category/food' , AdminFoodCategoryController::class)
+    ->middleware('auth:admin')
     ->names([
         'create' => 'create.category.food',
         'store' => 'store.category.food',

@@ -28,21 +28,28 @@ Route::prefix('auth')->controller(SellerAuthController::class)->group(function (
 //seller panel ---------------------
 Route::get('panel_seller' , function (){
     return view('sellerMain');
-})->name('panel.seller');
+    })
+    ->middleware('auth:seller')
+    ->name('panel.seller');
 
 
 
-//food crud
+//food crud -------------------------
+
 Route::resource('panel_seller/food' , FoodController::class)
+    ->middleware('auth:seller')
     ->except('show' , 'destroy');
-//    ->middleware('auth:seller');
-Route::delete('panel_seller/food' , [FoodController::class ,'destroy'])->name('food.destroy');
+
+Route::delete('panel_seller/food' , [FoodController::class ,'destroy'])
+    ->middleware('auth:seller')
+    ->name('food.destroy');
 
 
 
 //seller find food with name or category
 Route::prefix('panel_seller/food/find')
     ->controller(FindFoodController::class)
+    ->middleware('auth:seller')
     ->name('find.food.by.')->group(function (){
         Route::get('/' , 'searchByName')->name('name');
         Route::post('/' , 'searchByCategory')->name('category');

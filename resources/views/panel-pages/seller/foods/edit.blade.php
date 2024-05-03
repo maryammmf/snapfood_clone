@@ -22,19 +22,14 @@
     <link rel="shortcut icon" href="/../../assets/images/favicon.png" />
 </head>
 <body>
-{{--@if(session()->has('message'))--}}
-{{--    <div>--}}
-{{--        {{ session('message') }}--}}
-{{--    </div>--}}
-{{--@endif--}}
+
 <div class="col-12 grid-margin stretch-card mt-5" style="height: 600px">
     <div class="card mt-5">
         <div class="card-body">
-            <h4 class="card-title">افزودن غذای جدید</h4>
 
             <h4 class="card-title">اصلاح کردن غذا</h4>
 
-            <form class="forms-sample" action="{{ route('food.update' , $food) }}" method="post">
+            <form class="forms-sample" action="{{ route('food.update' , $food) }}" method="post" enctype="multipart/form-data">
                 @method('PUT')
                 @csrf
 
@@ -55,23 +50,24 @@
 
                 <div class="form-group">
                     <label for="photo">عکس</label>
-                    <input type="text" name="photo" value="{{ $food->photo }}" class="form-control" id="photo">
+                    <input type="file" name="photo" value="{{ $food->photo }}" class="form-control" id="photo">
                 </div>
 
                 <div class="form-group">
                     <label for="food_category_id">دسته بندی</label>
                     <select name="food_category_id" id="food_category_id">
-                        <option value="{{ $food->food_category_id }}" selected disabled>{{ $food->food_category_id }}</option>
+                        <option value="" selected disabled>انتخاب کنید</option>
                         @foreach($foodCategories as $foodCategory)
                             <option value="{{ $foodCategory->id }}">{{ $foodCategory->name }}</option>
                         @endforeach
                     </select>
                 </div>
 
+
                 <div class="form-group">
-                    <label for="discount">تخفیف</label>
-                    <select name="discount" id="discount">
-                        <option value="{{ $food->discount }}" selected disabled>{{ $food->discount }}</option>
+                    <label for="discount_id">تخفیف</label>
+                    <select name="discount_id" id="discount_id">
+                        <option value="" selected disabled>انتخاب کنید</option>
                         @foreach($discounts as $discount)
                             <option value="{{ $discount->id }}">{{ $discount->name }}</option>
                         @endforeach
@@ -102,60 +98,3 @@
 </html>
 
 @endsection
-
-
-
-
-
-{{--@extends('layouts.sellerMaster')--}}
-{{--@section('panel-seller.content')--}}
-
-{{--    <div class="col-12 grid-margin stretch-card mt-5" style="height: 300px">--}}
-{{--        <div class="card mt-5">--}}
-{{--            <div class="card-body">--}}
-{{--                <h4 class="card-title">اصلاح کردن غذا</h4>--}}
-
-{{--                <form class="forms-sample" action="{{ route('food.update' , $food) }}" method="post">--}}
-{{--                    @method('PUT')--}}
-{{--                    @csrf--}}
-
-{{--                    <div class="form-group">--}}
-{{--                        <label for="name">نام</label>--}}
-{{--                        <input type="text" name="name" value="{{ $food->name }}" class="form-control" id="name">--}}
-{{--                    </div>--}}
-
-{{--                    <div class="form-group">--}}
-{{--                        <label for="material">مواد اولیه</label>--}}
-{{--                        <input type="text" name="material" value="{{ $food->material }}" class="form-control" id="material">--}}
-{{--                    </div>--}}
-
-{{--                    <div class="form-group">--}}
-{{--                        <label for="price">قیمت</label>--}}
-{{--                        <input type="text" name="price" value="{{ $food->price }}" class="form-control" id="price">--}}
-{{--                    </div>--}}
-
-{{--                    <div class="form-group">--}}
-{{--                        <label for="photo">عکس</label>--}}
-{{--                        <input type="text" name="photo" value="{{ $food->photo }}" class="form-control" id="photo">--}}
-{{--                    </div>--}}
-
-{{--                    <div class="form-group">--}}
-{{--                        <label for="food_category_id">دسته بندی</label>--}}
-{{--                        <select name="food_category_id" id="food_category_id">--}}
-{{--                            <option value="{{ $food->food_category_id }}" selected disabled>{{ $food->food_category_id }}</option>--}}
-{{--                            @foreach($foodCategories as $foodCategory)--}}
-{{--                                <option value="{{ $foodCategory->id }}">{{ $foodCategory->name }}</option>--}}
-{{--                            @endforeach--}}
-{{--                        </select>--}}
-{{--                    </div>--}}
-
-
-{{--                    <button type="submit" class="btn btn-primary mr-2"> ذخیره </button>--}}
-{{--                </form>--}}
-
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-
-
-{{--@endsection--}}

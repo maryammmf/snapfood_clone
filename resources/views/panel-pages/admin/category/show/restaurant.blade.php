@@ -29,9 +29,9 @@
             <div class="table-responsive">
                 <table class="table table-striped">
                     <tr>
-                        <th>Name</th>
-                        <th>Creat Time</th>
-                        <th>Actions</th>
+                        <th>نام</th>
+                        <th>تاریخ ایجاد</th>
+                        <th>اکشن</th>
                     </tr>
                     @foreach($categories as $category)
                     <tr>

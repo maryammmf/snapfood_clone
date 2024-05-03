@@ -1,10 +1,6 @@
 <?php
 
-use App\Http\Controllers\admin\DiscountController;
-use App\Http\Controllers\seller\FindFoodController;
-use App\Http\Controllers\seller\FoodController;
-use App\Http\Controllers\seller\RestaurantController;
-use App\Http\Controllers\seller\SellerAuthController;
+
 use Illuminate\Support\Facades\Route;
 
 
@@ -19,24 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', function () {
-    return view('main');
+    return view('welcome');
 });
 
 
-require_once 'web/admin.php';
-require_once 'web/seller.php';
+require_once 'web/admin/admin.php';
+require_once 'web/seller/seller.php';
+require_once 'web/admin/discount.php';
+require_once 'web/seller/restaurant.php';
 
-
-
-
-//---------------------------------  restaurant  ----------------------------------------------------
-
-
-Route::resource('panel_seller/restaurant' , RestaurantController::class)->except('show' , 'create');
-Route::get('panel_seller/restaurant/{sellerId}' , [RestaurantController::class , 'create'])->name('restaurant.create');
-
-
-//---------------------------------  discount  ----------------------------------------------------
-
-Route::resource('panel_admin/discount' , DiscountController::class)->only('index' , 'create' , 'store');
-Route::delete('panel_admin/discount' , [DiscountController::class , 'destroy'])->name('discount.destroy');

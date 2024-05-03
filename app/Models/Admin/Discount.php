@@ -18,7 +18,7 @@ class Discount extends Model
     ];
 
 
-    public function food(){
+    public function foods(){
         return $this->hasMany(Food::class);
     }
 }

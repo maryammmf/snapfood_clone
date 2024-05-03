@@ -29,13 +29,13 @@
             <div class="table-responsive">
                 <table class="table table-striped">
                     <tr>
-                        <th>Name</th>
-                        <th>material</th>
-                        <th>Price</th>
-                        <th>photo</th>
-                        <th>category</th>
-                        <th>Creat Time</th>
-                        <th>Actions</th>
+                        <th>نام</th>
+                        <th>مواد اولیه</th>
+                        <th>قیمت</th>
+                        <th>عکس</th>
+                        <th>ددسته بندی</th>
+                        <th>تاریخ ایجاد</th>
+                        <th>اکشن</th>
                     </tr>
                     @foreach($foods as $food)
                         <tr>
@@ -44,7 +44,7 @@
                             <td>{{$food->price}}</td>
                             <td>{{$food->photo}}</td>
                             <td>
-                                @foreach($food->categories as $category)
+                                @foreach($food->foodcategories as $category)
                                     {{ $category->name }}
                                 @endforeach
                             </td>

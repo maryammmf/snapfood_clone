@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('price');
             $table->string('photo')->nullable();
             $table->foreignIdFor(FoodCategory::class)->constrained();
-            $table->foreignIdFor(Discount::class)->constrained();
+            $table->foreignIdFor(Discount::class)->nullable()->constrained();
             $table->timestamps();
         });
     }

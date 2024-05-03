@@ -49,31 +49,33 @@
 
                 <table class="table table-striped">
                     <tr>
-                        <th>Name</th>
-                        <th>material</th>
-                        <th>Price</th>
-                        <th>photo</th>
-                        <th>category</th>
-                        <th>discount</th>
-                        <th>Creat Time</th>
-                        <th>Actions</th>
+                        <th>نام</th>
+                        <th>مواد اولیه</th>
+                        <th>قیمت</th>
+                        <th>عکس</th>
+                        <th>دسته بندی</th>
+                        <th>تخفیف</th>
+                        <th>تاریخ ایجاد</th>
+                        <th>اکشن</th>
                     </tr>
                     @foreach($foods as $food)
                         <tr>
                             <td>{{$food->name}}</td>
                             <td>{{$food->material}}</td>
                             <td>{{$food->price}}</td>
-                            <td>{{$food->photo}}</td>
                             <td>
-                                @foreach($food->categories as $category)
+                                <img src="{{ asset('images/' . $food->photo) }}" alt="{{ $food->name }}">
+                            </td>
+                            <td>
+                                @foreach($food->foodcategories as $category)
                                 {{ $category->name }}
                                 @endforeach
                             </td>
 
                             <td>
-                                @foreach($food->categories as $category)
-                                {{ $category->name }}
-                                @endforeach
+{{--                                @foreach($food->discounts as $discount)--}}
+{{--                                {{ $discount->name }}--}}
+{{--                                @endforeach--}}
                             </td>
                             <td>{{$food->created_at}}</td>
                             <td>

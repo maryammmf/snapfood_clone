@@ -17,13 +17,15 @@ class Food extends Model
         'price',
         'photo',
         'food_category_id',
+        'discount_id',
     ];
 
-    public function categories(){
-        return $this->belongsToMany(FoodCategory::class);
+    public function foodcategories(){
+        return $this->belongsToMany(FoodCategory::class ,'food_food_category' );
     }
 
     public function discount(){
         return $this->belongsTo(Discount::class);
     }
+
 }

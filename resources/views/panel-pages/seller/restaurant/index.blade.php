@@ -29,13 +29,13 @@
             <div class="table-responsive">
                 <table class="table table-striped">
                     <tr>
-                        <th>Name</th>
-                        <th>restaurant_category</th>
-                        <th>number</th>
-                        <th>address</th>
-                        <th>bank_info</th>
-                        <th>Creat Time</th>
-                        <th>Actions</th>
+                        <th>نام</th>
+                        <th>دسته بندی رستوران</th>
+                        <th>تلفن</th>
+                        <th>ادرس</th>
+                        <th>اطلاعات بانکی</th>
+                        <th>تاریخ ایجاد</th>
+                        <th>اکشن</th>
                     </tr>
                     @foreach($restaurants as $restaurant)
                     <tr>

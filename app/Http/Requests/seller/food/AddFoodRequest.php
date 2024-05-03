@@ -25,8 +25,10 @@ class AddFoodRequest extends FormRequest
             'name' => ['required' , 'string' ],
             'material'=> ['string'],
             'price'=> ['required'],
-            'photo'=> ['string'],
+//            'photo'=> ['string'],
             'food_category_id'=> ['required'],
+            'discount_id'=> ['string'],
         ];
+
     }
 }

@@ -9,7 +9,6 @@ use App\Http\Requests\seller\food\UpdateFoodRequest;
 use App\Models\Admin\Discount;
 use App\Models\Admin\FoodCategory;
 use App\Models\seller\Food;
-use Illuminate\Http\Request;
 
 class FoodController extends Controller
 {
@@ -19,8 +18,9 @@ class FoodController extends Controller
     public function index()
     {
         $discounts = Discount::all();
-        $foods = Food::query()->paginate(2);
+        $foods = Food::query()->paginate(5);
         $foodCategories = FoodCategory::all();
+//        $discounts = Food::query()->firstOrFail( ... )->discounts;
         return view('panel-pages.seller.foods.index' , compact('foods' , 'foodCategories' , 'discounts'));
     }
 
@@ -39,8 +39,16 @@ class FoodController extends Controller
      */
     public function store(AddFoodRequest $request)
     {
-        Food::query()->create($request->validated());
-//        session()->flash('message' , 'ثبت شد');
+        $validated = $request->validated();
+
+        $file = $request->file('photo');
+        $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
+        $file->move(public_path('images') , $fileName);
+        $validated['photo'] = $fileName;
+
+
+        $food = Food::query()->create($validated);
+        $food->foodcategories()->attach($request->food_category_id);
         return redirect()->back();
     }
 
@@ -51,7 +59,9 @@ class FoodController extends Controller
     public function edit(Food $food)
     {
         $foodCategories = FoodCategory::all();
-        return view('panel-pages.seller.foods.edit' , compact('food' , 'foodCategories' ));
+        $discounts = Discount::all();
+
+        return view('panel-pages.seller.foods.edit' , compact('food' , 'foodCategories','discounts' ));
     }
 
     /**
@@ -59,8 +69,20 @@ class FoodController extends Controller
      */
     public function update(UpdateFoodRequest $request, Food $food)
     {
+//        dd('first');
         $validated = $request->validated();
+        if ($request->hasFile('photo')){
+//            dd('44');
+            $file = $request->file('photo');
+            $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('images') , $fileName);
+            $validated['photo'] = $fileName;
+        }
+
+
+
         $food->update($validated);
+        $food->foodcategories()->sync($request->input('food_category_id'));
         return redirect(route('food.index'));
 
     }
@@ -70,7 +92,7 @@ class FoodController extends Controller
      */
     public function destroy(DeleteFoodRequest $request)
     {
-        $food = Food::findOrFail($request->id); // Retrieve the food by ID
+        $food = Food::findOrFail($request->id);
         $food->delete();
         return back();
 
