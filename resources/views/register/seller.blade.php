@@ -44,7 +44,7 @@
 
             <div class="mb-4">
                 <label for="phone" class="form-label">phone</label>
-                <input type="text" name="phone" value="{{old('phone')}}" id="email" class="form-control shadow-sm  bg-light bg-opacity-75">
+                <input type="number" name="phone" value="{{old('phone')}}" id="email" class="form-control shadow-sm  bg-light bg-opacity-75">
                 @error('phone')
                 <div class="text-danger">{{$message}}</div>
                 @enderror

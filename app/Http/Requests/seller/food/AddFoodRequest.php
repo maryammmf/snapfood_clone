@@ -28,6 +28,7 @@ class AddFoodRequest extends FormRequest
 //            'photo'=> ['string'],
             'food_category_id'=> ['required'],
             'discount_id'=> ['string'],
+            'seller_id' => ['string']
         ];
 
     }
