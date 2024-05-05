@@ -41,7 +41,7 @@
 {{--                        <a class="nav-link" href="{{ route('create.category.restaurant') }}">رستوران</a>--}}
 {{--                    </li>--}}
 {{--                    <li class="nav-item">--}}
-{{--                        <a class="nav-link" href="{{ route('create.category.food') }}">غذا</a>--}}
+{{--                        <a class="nav-link" href="{{ route('create.category.foods') }}">غذا</a>--}}
 {{--                    </li>--}}
 {{--                    <li class="nav-item">--}}
 {{--                        <a class="nav-link" href="pages/ui-features/typography.html">Typography</a>--}}
@@ -50,7 +50,7 @@
 {{--            </div>--}}
 {{--        </li>--}}
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('food.create') }}">
+            <a class="nav-link" href="{{ route('foods.create') }}">
                 <i class="mdi mdi-contacts menu-icon"></i>
                 <span class="menu-title">غذاها</span>
             </a>

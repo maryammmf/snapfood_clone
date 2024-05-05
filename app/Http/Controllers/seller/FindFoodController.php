@@ -21,7 +21,7 @@ class FindFoodController extends Controller
     public function searchByCategory(FindFoodByCategoryRquest $request){
         $validated = $request->validated();
         $foods = Food::query()->where('food_category_id' , $validated['food_category_id'])->where( 'seller_id' , Auth::id())->paginate(5);
-//        dd($food);
+//        dd($foods);
         return view('panel-pages.seller.foods.showFind' , compact('foods'));
     }
 

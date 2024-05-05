@@ -38,23 +38,23 @@ Route::get('panel_seller' , function (){
 
 
 
-//food crud -------------------------
+//foods crud -------------------------
 
-Route::resource('panel_seller/food' , FoodController::class)
+Route::resource('panel_seller/foods' , FoodController::class)
     ->middleware('auth:seller')
     ->except('show' , 'destroy');
 
-Route::delete('panel_seller/food' , [FoodController::class ,'destroy'])
+Route::delete('panel_seller/foods' , [FoodController::class ,'destroy'])
     ->middleware('auth:seller')
-    ->name('food.destroy');
+    ->name('foods.destroy');
 
 
 
-//seller find food with name or category
-Route::prefix('panel_seller/food/find')
+//seller find foods with name or category
+Route::prefix('panel_seller/foods/find')
     ->controller(FindFoodController::class)
     ->middleware('auth:seller')
-    ->name('find.food.by.')->group(function (){
+    ->name('find.foods.by.')->group(function (){
         Route::get('/' , 'searchByName')->name('name');
         Route::post('/' , 'searchByCategory')->name('category');
 });

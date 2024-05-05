@@ -22,7 +22,7 @@ class DeleteFoodRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id' => ['required' , 'exists:food,id']
+            'id' => ['required' , 'exists:foods,id']
         ];
     }
 }

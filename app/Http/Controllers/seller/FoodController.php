@@ -83,7 +83,7 @@ class FoodController extends Controller
 
         $food->update($validated);
         $food->foodcategories()->sync($request->input('food_category_id'));
-        return redirect(route('food.index'));
+        return redirect(route('foods.index'));
 
     }
 

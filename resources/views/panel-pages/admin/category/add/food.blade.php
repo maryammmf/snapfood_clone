@@ -22,8 +22,8 @@
     <link rel="shortcut icon" href="/../../assets/images/favicon.png" />
 </head>
 <body>
-{{--action="{{ route('store.category.food') }}"--}}
-{{--<a href="{{ route('index.category.food') }}">نمایش تمام دسته نبدی ها</a>--}}
+{{--action="{{ route('store.category.foods') }}"--}}
+{{--<a href="{{ route('index.category.foods') }}">نمایش تمام دسته نبدی ها</a>--}}
 
 
 
@@ -31,7 +31,7 @@
     <div class="card mt-5">
         <div class="card-body">
             <h4 class="card-title">افزودن دسته بندی جدید به غذا ها</h4>
-            <form class="forms-sample" action="{{ route('store.category.food') }}" method="post">
+            <form class="forms-sample" action="{{ route('store.category.foods') }}" method="post">
                 @csrf
                 <div class="form-group">
                     <label for="name">نام</label>
@@ -41,7 +41,7 @@
             </form>
 
             <div><br>
-                <a href="{{ route('index.category.food') }}">نمایش تمام دسته نبدی ها</a>
+                <a href="{{ route('index.category.foods') }}">نمایش تمام دسته نبدی ها</a>
             </div>
         </div>
     </div>

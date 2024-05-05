@@ -3,6 +3,8 @@
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\AdminFoodCategoryController;
 use App\Http\Controllers\Admin\AdminRestaurantCategoryController;
+use App\Http\Controllers\Admin\FoodSellerController;
+use App\Http\Controllers\admin\RestaurantSellerController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -28,18 +30,21 @@ Route::get('panel_admin' , function (){
     })->middleware('auth:admin')
     ->name('panel-login.admin');
 
+
+
+
 //----------------------------------  categry  -----------------------------------------------------
 
-//category.food
-Route::resource('panel_admin/category/food' , AdminFoodCategoryController::class)
+//category.foods
+Route::resource('panel_admin/category/foods' , AdminFoodCategoryController::class)
     ->middleware('auth:admin')
     ->names([
-        'create' => 'create.category.food',
-        'store' => 'store.category.food',
-        'index' => 'index.category.food',
-        'edit' => 'edit.category.food',
-        'update' => 'update.category.food',
-        'destroy' => 'delete.category.food',
+        'create' => 'create.category.foods',
+        'store' => 'store.category.foods',
+        'index' => 'index.category.foods',
+        'edit' => 'edit.category.foods',
+        'update' => 'update.category.foods',
+        'destroy' => 'delete.category.foods',
     ])->except('show');
 
 
@@ -54,3 +59,18 @@ Route::resource('panel_admin/category/restaurant' , AdminRestaurantCategoryContr
         'update' => 'update.category.restaurant',
         'destroy' => 'delete.category.restaurant',
     ])->except('show');
+
+
+
+
+//---------------------------------- show all food  -----------------------------------------------------
+Route::get('panel_admin/foods' , [FoodSellerController::class , 'index'])
+//    ->middleware('auth:admin')
+    ->name('admin.foods.index');
+
+
+//---------------------------------- show all restaurant  -----------------------------------------------------
+Route::get('panel_admin/restaurants' , [RestaurantSellerController::class , 'index'])
+//    ->middleware('auth:admin')
+    ->name('admin.restaurants.index');
+

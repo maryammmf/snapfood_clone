@@ -41,14 +41,14 @@
                             <td>
                                 <ul>
                                     <li>
-                                        <form action="{{ route('delete.category.food' , $category->id)}}" method="post">
+                                        <form action="{{ route('delete.category.foods' , $category->id)}}" method="post">
                                             @method('DELETE')
                                             @csrf
                                             <input type="hidden" value="{{ $category->id }}" name="id">
                                             <input type="submit" value="Delete" >
                                         </form>
                                     </li>
-                                    <li><a href="{{ route('edit.category.food' , $category->id) }}">Edit</a></li>
+                                    <li><a href="{{ route('edit.category.foods' , $category->id) }}">Edit</a></li>
                                 </ul>
                             </td>
                         </tr>
@@ -118,18 +118,18 @@
 {{--            <td>{{$category->created_at}}</td>--}}
 {{--            <td>--}}
 {{--                <ul>--}}
-{{--                    <li><a href="{{ route('delete.category.food' , $category->id) }}">Delete</a></li>--}}
+{{--                    <li><a href="{{ route('delete.category.foods' , $category->id) }}">Delete</a></li>--}}
 {{--                    <li>--}}
-{{--                        <form action="{{ route('delete.category.food' , $category->id)}}" method="post">--}}
+{{--                        <form action="{{ route('delete.category.foods' , $category->id)}}" method="post">--}}
 {{--                            @method('DELETE')--}}
 {{--                            @csrf--}}
 {{--                            <input type="hidden" value="{{ $category->id }}" name="id">--}}
 {{--                            <input type="submit" value="Delete" >--}}
 {{--                        </form>--}}
 {{--                    </li>--}}
-{{--                    <li><a href="{{ route('edit.category.food' , $category->id) }}">Edit</a></li>--}}
+{{--                    <li><a href="{{ route('edit.category.foods' , $category->id) }}">Edit</a></li>--}}
 {{--                    <li>--}}
-{{--                        <form action="{{ route('edit.category.food')}}" method="post">--}}
+{{--                        <form action="{{ route('edit.category.foods')}}" method="post">--}}
 {{--                            @csrf--}}
 {{--                            @method('DELETE')--}}
 {{--                            <input type="hidden" value="{{ $category->id }}" name="id">--}}

@@ -32,7 +32,7 @@
         <div class="card-body">
             <h4 class="card-title">افزودن غذای جدید</h4>
 
-            <form class="forms-sample" action="{{ route('food.store') }}" method="post">
+            <form class="forms-sample" action="{{ route('foods.store') }}" method="post">
                 @csrf
 
                 <div class="form-group">
@@ -69,7 +69,7 @@
             </form>
 
             <div><br>
-                <a href="{{ route('food.index') }}">نمایش تمام غذا ها</a>
+                <a href="{{ route('foods.index') }}">نمایش تمام غذا ها</a>
             </div>
         </div>
     </div>

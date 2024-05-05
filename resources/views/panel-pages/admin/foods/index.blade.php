@@ -1,5 +1,5 @@
-@extends('layouts.sellerMaster')
-@section('panel-seller.content')
+@extends('layouts.adminMaster')
+@section('panel-admin.content')
 
 
 <!DOCTYPE html>
@@ -28,25 +28,6 @@
         <div class="card-body" style="margin-top: 100px">
             <h4 class="card-title"> غذا </h4>
             <div class="table-responsive">
-
-                {{-- serch form--}}
-                <h4>سرچ غذا</h4>
-
-                <form action="{{ route('find.foods.by.name') }}" method="get">
-                    <input type="text" name="name" id="search" placeholder="اسم غذا">
-                    <input type="submit" value="جستجو">
-                </form>
-
-                <form action="{{ route('find.foods.by.category') }}" method="post">
-                    @csrf
-                    <select name="food_category_id" id="food_category_id">
-                        <option value="" selected disabled>دسته بندی</option>
-                        @foreach($foodCategories as $foodCategory)
-                            <option value="{{ $foodCategory->id }}">{{ $foodCategory->name }}</option>
-                        @endforeach
-                    </select>
-                    <input type="submit" value="جستجو">
-                </form>
 
                 <table class="table table-striped">
                     <tr>

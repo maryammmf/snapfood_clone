@@ -29,7 +29,7 @@
 
             <h4 class="card-title">اصلاح کردن غذا</h4>
 
-            <form class="forms-sample" action="{{ route('food.update' , $food) }}" method="post" enctype="multipart/form-data">
+            <form class="forms-sample" action="{{ route('foods.update' , $food) }}" method="post" enctype="multipart/form-data">
                 @method('PUT')
                 @csrf
 
@@ -79,7 +79,7 @@
             </form>
 
 {{--            <div><br>--}}
-{{--                <a href="{{ route('food.index') }}">نمایش تمام غذا ها</a>--}}
+{{--                <a href="{{ route('foods.index') }}">نمایش تمام غذا ها</a>--}}
 {{--            </div>--}}
         </div>
     </div>

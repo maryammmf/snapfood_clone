@@ -42,7 +42,7 @@
                         <a class="nav-link" href="{{ route('create.category.restaurant') }}">رستوران</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('create.category.food') }}">غذا</a>
+                        <a class="nav-link" href="{{ route('create.category.foods') }}">غذا</a>
                     </li>
 {{--                    <li class="nav-item">--}}
 {{--                        <a class="nav-link" href="pages/ui-features/typography.html">Typography</a>--}}
@@ -63,10 +63,27 @@
                 <span class="menu-title">گزارشات</span>
             </a>
         </li>
+
         <li class="nav-item">
             <a class="nav-link" href="{{ route('discount.create') }}">
                 <i class="mdi mdi-table-large menu-icon"></i>
                 <span class="menu-title">تخفیف ها</span>
+            </a>
+        </li>
+
+
+
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('admin.foods.index') }}">
+                <i class="mdi mdi-food menu-icon"></i>
+                <span class="menu-title">لیست غذاها</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('admin.restaurants.index') }}">
+                <i class="mdi mdi-silverware menu-icon"></i>
+                <span class="menu-title">لیست رستوران ها</span>
             </a>
         </li>
 

@@ -1,5 +1,5 @@
-@extends('layouts.sellerMaster')
-@section('panel-seller.content')
+@extends('layouts.adminMaster')
+@section('panel-admin.content')
 
 <!DOCTYPE html>
 <html lang="en">
