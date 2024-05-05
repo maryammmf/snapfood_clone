@@ -41,6 +41,10 @@
                     <tr>
                         <td>{{$restaurant->name}}</td>
                         <td>{{$restaurant->restaurant_category_id}}</td>
+{{--                        <td>{{ optional($restaurant->restaurants)->name }}</td>--}}
+{{--                        <td>{{ optional($food->discount)->name }}</td>--}}
+
+
                         <td>{{$restaurant->number}}</td>
                         <td>{{$restaurant->address}}</td>
                         <td>{{$restaurant->bank_info}}</td>

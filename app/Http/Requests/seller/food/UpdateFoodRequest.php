@@ -27,6 +27,8 @@ class UpdateFoodRequest extends FormRequest
             'price'=> ['string'],
 //            'photo'=> ['string'],
             'food_category_id'=> ['string'],
+            'discount_id' => ['string'],
+
         ];
     }
 }

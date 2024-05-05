@@ -33,7 +33,8 @@
                         <th>مواد اولیه</th>
                         <th>قیمت</th>
                         <th>عکس</th>
-                        <th>ددسته بندی</th>
+                        <th>دسته بندی</th>
+                        <th>تخفیف</th>
                         <th>تاریخ ایجاد</th>
                         <th>اکشن</th>
                     </tr>
@@ -42,12 +43,15 @@
                             <td>{{$food->name}}</td>
                             <td>{{$food->material}}</td>
                             <td>{{$food->price}}</td>
-                            <td>{{$food->photo}}</td>
+                            <td>
+                                <img src="{{ asset('images/' . $food->photo) }}" alt="{{ $food->name }}">
+                            </td>
                             <td>
                                 @foreach($food->foodcategories as $category)
                                     {{ $category->name }}
                                 @endforeach
                             </td>
+                            <td>{{ optional($food->discount)->name }}</td>
                             <td>{{$food->created_at}}</td>
                             <td>
                                 <ul>

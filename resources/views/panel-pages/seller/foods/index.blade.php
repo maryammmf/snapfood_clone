@@ -1,6 +1,7 @@
 @extends('layouts.sellerMaster')
 @section('panel-seller.content')
-{{--@dd($foods->getPaginator())--}}
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -72,11 +73,7 @@
                                 @endforeach
                             </td>
 
-                            <td>
-{{--                                @foreach($food->discounts as $discount)--}}
-{{--                                {{ $discount->name }}--}}
-{{--                                @endforeach--}}
-                            </td>
+                            <td>{{ optional($food->discount)->name }}</td>
                             <td>{{$food->created_at}}</td>
                             <td>
                                 <ul>

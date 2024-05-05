@@ -44,7 +44,9 @@ class AdminFoodCategoryController extends Controller
      */
     public function edit(int $id)
     {
-        return view('panel-pages.admin.category.edit.food' , compact('id'));
+        $foodCategory = FoodCategory::query()->where('id' , $id)->first();
+
+        return view('panel-pages.admin.category.edit.food' , compact( 'foodCategory','id'));
     }
 
     /**

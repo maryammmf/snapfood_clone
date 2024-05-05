@@ -41,7 +41,7 @@
 
         <div class="mb-4">
             <label for="number" class="form-label">number</label>
-            <input type="text" name="number" value="{{old('number')}}" id="email" class="form-control shadow-sm  bg-light bg-opacity-75">
+            <input type="number" name="number" value="{{old('number')}}" id="email" class="form-control shadow-sm  bg-light bg-opacity-75">
             @error('number')
             <div class="text-danger">{{$message}}</div>
             @enderror

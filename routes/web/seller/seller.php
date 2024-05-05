@@ -8,8 +8,12 @@ use Illuminate\Support\Facades\Route;
 
 
 //seller register and login and logout
-Route::prefix('auth')->controller(SellerAuthController::class)->group(function (){
-    Route::prefix('seller/register')->name('seller.register.')->group(function(){
+Route::prefix('auth')
+    ->controller(SellerAuthController::class)
+    ->group(function (){
+    Route::prefix('seller/register')
+        ->name('seller.register.')
+        ->group(function(){
         Route::get('/' , 'showRegister')->name('show');
         Route::post('/' , 'submitRegister')->name('check');
     });
@@ -53,4 +57,4 @@ Route::prefix('panel_seller/food/find')
     ->name('find.food.by.')->group(function (){
         Route::get('/' , 'searchByName')->name('name');
         Route::post('/' , 'searchByCategory')->name('category');
-})->middleware('auth:seller');
+});

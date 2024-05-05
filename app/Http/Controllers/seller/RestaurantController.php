@@ -20,7 +20,8 @@ class RestaurantController extends Controller
     {
         $userId = Auth::guard('seller')->id();
 //        dd($userId);
-        $restaurants = Restaurant::query()->where('seller_id' , $userId)->get();
+        $restaurants = Restaurant::all();
+//        dd($restaurants);
         return view('panel-pages.seller.restaurant.index' , compact('restaurants'));
     }
 

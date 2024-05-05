@@ -12,6 +12,5 @@ Route::resource('panel_seller/restaurant' , RestaurantController::class)
     ->except('show' , 'create');
 
 Route::get('panel_seller/restaurant/{sellerId}' , [RestaurantController::class , 'create'])
-    ->middleware('auth:seller')
     ->name('restaurant.create');
 

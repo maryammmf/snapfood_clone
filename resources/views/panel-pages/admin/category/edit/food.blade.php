@@ -32,7 +32,7 @@
                 @csrf
                 <div class="form-group">
                     <label for="name">نام</label>
-                    <input type="text" name="name" class="form-control" id="name" >
+                    <input type="text" name="name" value="{{ $foodCategory->name }}" class="form-control" id="name" >
                 </div>
                 <button type="submit" class="btn btn-primary mr-2"> ذخیره </button>
             </form>

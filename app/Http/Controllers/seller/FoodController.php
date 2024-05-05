@@ -17,10 +17,10 @@ class FoodController extends Controller
      */
     public function index()
     {
-        $discounts = Discount::all();
         $foods = Food::query()->paginate(5);
         $foodCategories = FoodCategory::all();
-//        $discounts = Food::query()->firstOrFail( ... )->discounts;
+        $discounts = Discount::all();
+
         return view('panel-pages.seller.foods.index' , compact('foods' , 'foodCategories' , 'discounts'));
     }
 
@@ -78,8 +78,6 @@ class FoodController extends Controller
             $file->move(public_path('images') , $fileName);
             $validated['photo'] = $fileName;
         }
-
-
 
         $food->update($validated);
         $food->foodcategories()->sync($request->input('food_category_id'));

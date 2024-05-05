@@ -48,7 +48,7 @@
 
                 <div class="form-group">
                     <label for="expired_at">تاریخ انقضا</label>
-                    <input type="date" name="expired_at" class="form-control" id="expired_at">
+                    <input type="date" min="{{ date("Y-m-d")}}" name="expired_at" class="form-control" id="expired_at">
                 </div>
 
 
