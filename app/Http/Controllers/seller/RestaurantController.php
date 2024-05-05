@@ -18,10 +18,8 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        $userId = Auth::guard('seller')->id();
-//        dd($userId);
-        $restaurants = Restaurant::all();
-//        dd($restaurants);
+        $userId = Auth::id();
+        $restaurants = Restaurant::query()->where('seller_id' , Auth::id())->get();
         return view('panel-pages.seller.restaurant.index' , compact('restaurants'));
     }
 
@@ -70,13 +68,10 @@ class RestaurantController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(DestroyRequest $request)
-    {
-//        dd($request->id);
-        Restaurant::query()->where('id' , $request->id)->delete();
-//        dd($restaurant);
-//        $restaurant->delete();
-        return back();
-    }
+//    public function destroy(DestroyRequest $request)
+//    {
+//        Restaurant::query()->where('id' , $request->id)->delete();
+//        return back();
+//    }
 
 }

@@ -9,8 +9,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::resource('panel_seller/restaurant' , RestaurantController::class)
     ->middleware('auth:seller')
-    ->except('show' , 'create');
+    ->except('show' , 'create' , 'store');
 
 Route::get('panel_seller/restaurant/{sellerId}' , [RestaurantController::class , 'create'])
     ->name('restaurant.create');
+
+Route::post('panel_seller/restaurant' , [RestaurantController::class , 'store'])
+    ->name('restaurant.store');
 
