@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\User\StoreUserAddressRequest;
+use App\Models\User\User;
+use App\Models\User\UserAddress;
 use Illuminate\Http\Request;
 
 class UserAddressController extends Controller
@@ -15,37 +18,20 @@ class UserAddressController extends Controller
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreUserAddressRequest $request)
     {
-        //
+        $validated = $request->validated();
+//        $user_id = User::query()->where('id' , $validated->);
+        $address = UserAddress::query()->create($validated);
+        dd($address);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
