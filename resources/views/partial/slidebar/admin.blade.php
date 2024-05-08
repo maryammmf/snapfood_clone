@@ -1,5 +1,5 @@
 <style>
-    span{ font-family: Vazir;
+    span,p,a{ font-family: Vazir;
         font-weight: bold;
     }
 </style>

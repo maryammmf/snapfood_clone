@@ -18,4 +18,5 @@ class FoodCategory extends Model
         return $this->belongsToMany(Food::class ,'food_food_category' );
     }
 
+
 }

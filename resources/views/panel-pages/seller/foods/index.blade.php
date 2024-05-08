@@ -18,6 +18,13 @@
     <link rel="shortcut icon" href="/../../assets/images/favicon.png" />
 
 
+    <style>
+        body,h4 {
+            font-family: Vazir !important;
+        }
+
+    </style>
+
 </head>
 
 <body>
@@ -26,7 +33,7 @@
 <div class="col-lg-12 grid-margin stretch-card ">
     <div class="card">
         <div class="card-body" style="margin-top: 100px">
-            <h4 class="card-title"> غذا </h4>
+            <h4 class="card-title"> لیست تمام غذاها </h4>
             <div class="table-responsive">
 
                 {{-- serch form--}}

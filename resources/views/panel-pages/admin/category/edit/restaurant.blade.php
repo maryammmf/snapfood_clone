@@ -18,6 +18,13 @@
     <link rel="shortcut icon" href="/../../assets/images/favicon.png" />
 
 
+    <style>
+        body,h4 {
+            font-family: Vazir !important;
+        }
+
+    </style>
+
 </head>
 <body>
 

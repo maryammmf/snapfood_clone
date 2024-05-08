@@ -5,8 +5,8 @@
 <html lang="en">
 <head>
     <style>
-        h4,label,button {
-            font-family: Vazir;
+        body,h4 {
+            font-family: Vazir !important;
         }
     </style>
     <!-- Required meta tags -->

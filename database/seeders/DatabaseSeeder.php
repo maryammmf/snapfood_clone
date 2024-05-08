@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User\User;
+use App\Models\User\UserAddress;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -20,5 +22,8 @@ class DatabaseSeeder extends Seeder
              'email' => 'admin@gmail.com',
              'password'=>Hash::make('123'),
          ]);
+
+         User::factory(10)->create();
+         UserAddress::factory(10)->create();
     }
 }

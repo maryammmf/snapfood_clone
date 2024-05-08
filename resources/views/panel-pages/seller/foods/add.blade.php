@@ -5,9 +5,10 @@
 <html lang="en">
 <head>
     <style>
-        h4,label,button {
-            font-family: Vazir;
+        label,button,a,h4 {
+            font-family: Vazir !important;
         }
+
     </style>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
@@ -23,7 +24,7 @@
 </head>
 <body>
 
-<div class="col-12 grid-margin stretch-card mt-5" style="height: 600px">
+<div class="col-12 grid-margin stretch-card mt-5" style="height: 620px">
     <div class="card mt-5">
         <div class="card-body">
             <h4 class="card-title">افزودن غذای جدید</h4>

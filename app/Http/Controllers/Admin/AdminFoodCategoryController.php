@@ -35,7 +35,7 @@ class AdminFoodCategoryController extends Controller
     public function store(AddCategoryRequest $request)
     {
         FoodCategory::query()->create($request->validated());
-        return back()->with('message added');
+        return redirect(route('index.category.foods'));
     }
 
 

@@ -1,8 +1,11 @@
 <style>
-    span{ font-family: Vazir;
+    span,p,a{
+        font-family: Vazir !important;
         font-weight: bold;
     }
+
 </style>
+
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <div class="text-center sidebar-brand-wrapper d-flex align-items-center">
         <a class="sidebar-brand brand-logo" href="index.html"><img src="/assets/images/logo.svg" alt="logo" /></a>

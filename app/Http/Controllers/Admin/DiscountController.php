@@ -33,7 +33,7 @@ class DiscountController extends Controller
     public function store(AddDiscountRequest $request)
     {
         Discount::query()->create($request->validated());
-        return redirect()->back();
+        return redirect(route('discount.index'));
     }
 
     /**

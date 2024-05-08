@@ -51,7 +51,7 @@ class FoodController extends Controller
 
         $food = Food::query()->create($validated);
         $food->foodcategories()->attach($request->food_category_id);
-        return redirect()->back();
+        return redirect(route('foods.index'));
     }
 
 
