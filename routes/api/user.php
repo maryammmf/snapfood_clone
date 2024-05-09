@@ -11,4 +11,5 @@ Route::get('user/login' , [UserAuthCotroller::class , 'login']);
 
 //user address crud ------------------------
 
-Route::get('address' , [UserAddressController::class , 'store']);
+//Route::get('address' , [UserAddressController::class , 'store']);
+Route::resource('addresses' , UserAddressController::class )->only('store' , 'index' , 'update' );

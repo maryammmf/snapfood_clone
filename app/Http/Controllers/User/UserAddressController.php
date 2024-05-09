@@ -4,9 +4,8 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\StoreUserAddressRequest;
-use App\Models\User\User;
+use App\Http\Requests\User\UpdateUserAddressRequest;
 use App\Models\User\UserAddress;
-use Illuminate\Http\Request;
 
 class UserAddressController extends Controller
 {
@@ -15,7 +14,9 @@ class UserAddressController extends Controller
      */
     public function index()
     {
-        //
+//        dd(33);
+        $addreesses = UserAddress::all();
+        dd($addreesses);
     }
 
 
@@ -28,7 +29,9 @@ class UserAddressController extends Controller
         $validated = $request->validated();
 //        $user_id = User::query()->where('id' , $validated->);
         $address = UserAddress::query()->create($validated);
-        dd($address);
+        return response()->json([
+            'message' => __('response.store_successfully'),
+        ]);
     }
 
 
@@ -36,16 +39,14 @@ class UserAddressController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateUserAddressRequest $request, UserAddress $userAddress)
     {
-        //
+        $validated = $request->validated();
+        $address = UserAddress::query()->update($validated);
+        return response()->json([
+            'message' => __('response.update_successfully'),
+        ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
+
 }
