@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\StoreUserAddressRequest;
 use App\Http\Requests\User\UpdateUserAddressRequest;
+use App\Http\Resources\User\UserAddressResource;
 use App\Models\User\UserAddress;
 
 class UserAddressController extends Controller
@@ -14,11 +15,9 @@ class UserAddressController extends Controller
      */
     public function index()
     {
-//        dd(33);
         $addreesses = UserAddress::all();
-        dd($addreesses);
+        return UserAddressResource::collection($addreesses);
     }
-
 
 
     /**
@@ -27,7 +26,6 @@ class UserAddressController extends Controller
     public function store(StoreUserAddressRequest $request)
     {
         $validated = $request->validated();
-//        $user_id = User::query()->where('id' , $validated->);
         $address = UserAddress::query()->create($validated);
         return response()->json([
             'message' => __('response.store_successfully'),
@@ -35,18 +33,18 @@ class UserAddressController extends Controller
     }
 
 
-
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateUserAddressRequest $request, UserAddress $userAddress)
+    public function update(UpdateUserAddressRequest $request ,  $addressId)
     {
         $validated = $request->validated();
-        $address = UserAddress::query()->update($validated);
+        $address = UserAddress::query()->where('id' , $addressId)->update($validated);
         return response()->json([
             'message' => __('response.update_successfully'),
         ]);
     }
+
 
 
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\UserLoginRequst;
 use App\Models\User\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -17,7 +18,8 @@ class UserAuthCotroller extends Controller
         }
         $token = $user->createToken('auth')->plainTextToken;
         return response()->json([
-            'token' => $token
+            'token' => $token,
+            'user_id' => Auth::id()
         ]);
     }
 
