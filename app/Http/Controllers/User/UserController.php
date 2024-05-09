@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\User\UpdateUserInfoRequest;
+use App\Models\User\User;
+use App\Models\User\UserAddress;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -30,9 +33,13 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateUserInfoRequest $request, int $userId)
     {
-        //
+        $validated = $request->validated();
+        $user = User::query()->where('id' , $userId)->update($validated);
+        return response()->json([
+            'message' => __('response.update_user_successfully'),
+        ]);
     }
 
     /**
