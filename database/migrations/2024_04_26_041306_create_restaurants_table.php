@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('bank_info');
             $table->string('is_open')->nullable();
             $table->string('schedule')->nullable();
+            $table->string('shipping_cost')->nullable();
+            $table->string('photo')->nullable();
             $table->timestamps();
         });
     }

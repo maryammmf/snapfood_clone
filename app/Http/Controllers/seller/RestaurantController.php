@@ -10,6 +10,7 @@ use App\Models\Admin\RestaurantCategory;
 use App\Models\seller\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rules\Unique;
 
 class RestaurantController extends Controller
 {
@@ -60,19 +61,26 @@ class RestaurantController extends Controller
     public function update(UpdateRequest $request, Restaurant $restaurant)
     {
         $validated = $request->validated();
+
+//      set schedule
         $schedule = [];
         foreach ($validated['days'] as $key=>$day){
             if (isset($validated['days_time'][$key])){
             $schedule[]= "$day {$validated['days_time'][$key]}";
             }
         }
-
         $validated['schedule'] = json_encode($schedule);
-        $validated['seller_id'] = Auth::guard('seller')->id();
-
         unset($validated['days']);
         unset($validated['days_time']);
 
+//      set photo
+        $file = $request->file('photo');
+        $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
+        $file->move(public_path('images') , $fileName);
+        $validated['photo'] = $fileName;
+
+
+        $validated['seller_id'] = Auth::guard('seller')->id();
         $restaurant->update($validated);
         return redirect(route('restaurant.index'));
     }

@@ -47,6 +47,7 @@ class FoodController extends Controller
         $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
         $file->move(public_path('images') , $fileName);
         $validated['photo'] = $fileName;
+
         $validated['seller_id'] = Auth::id();
 
         $food = Food::query()->create($validated);

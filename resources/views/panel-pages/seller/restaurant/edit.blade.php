@@ -28,12 +28,12 @@
 <body>
 
 
-<div class="col-12 grid-margin stretch-card mt-5" style="height: 1000px">
+<div class="col-12 grid-margin stretch-card mt-5" style="height: 1200px">
     <div class="card mt-5">
         <div class="card-body">
             <h4 class="card-title">اصلاح کردن رستوران</h4>
 
-            <form class="forms-sample" action="{{ route('restaurant.update' , $restaurant) }}" method="post">
+            <form class="forms-sample" action="{{ route('restaurant.update' , $restaurant) }}" method="post" enctype="multipart/form-data">
                 @method('PUT')
                 @csrf
 
@@ -57,6 +57,17 @@
                 <div class="form-group">
                     <label for="bank_info">اطلاعات بانکی</label>
                     <input type="text" name="bank_info" value="{{ $restaurant->bank_info }}" class="form-control" id="bank_info">
+                </div>
+
+
+                <div class="form-group">
+                    <label for="shipping_cost">هزینه ارسال</label>
+                    <input type="number" name="shipping_cost" class="form-control" id="shipping_cost">
+                </div>
+
+                <div class="form-group">
+                    <label for="photo">عکس</label>
+                    <input type="file" name="photo" class="form-control" id="photo">
                 </div>
 
                 <div class="form-group card-header">

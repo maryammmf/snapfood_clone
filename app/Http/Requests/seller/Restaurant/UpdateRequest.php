@@ -31,7 +31,8 @@ class UpdateRequest extends FormRequest
             'schedule' => ['string'],
             'days' => ['required' , 'array'],
             'days_time' => ['required' , 'array'],
-//            'seller_id' => ['required'],
+            'shipping_cost' => ['integer'],
+//            'photo' => ['required'],
         ];
     }
 }
