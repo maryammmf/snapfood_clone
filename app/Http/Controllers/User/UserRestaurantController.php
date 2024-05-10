@@ -20,6 +20,14 @@ class UserRestaurantController extends Controller
         return UserIndexRestaurantReesource::collection($restaurants);
     }
 
+    public function show(int $restaurantId){
+//        echo $restaurantId;
+//        dd($restaurantId);
+        $restaurant = Restaurant::query()->where('id' , $restaurantId)->firstOrFail();
+        return $restaurant;
+//        dd($restaurant);
+    }
+
 
 
 }
