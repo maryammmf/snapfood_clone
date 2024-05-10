@@ -15,6 +15,8 @@ class Restaurant extends Model
         'restaurant_category_id',
         'number',
         'address',
+        'latitude',
+        'longitude',
         'bank_info',
         'seller_id',
         'is_open',

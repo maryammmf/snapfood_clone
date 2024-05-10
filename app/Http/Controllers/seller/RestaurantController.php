@@ -73,6 +73,16 @@ class RestaurantController extends Controller
         unset($validated['days']);
         unset($validated['days_time']);
 
+//        set address
+        $address = [
+          'address'=>$validated['address'],
+          'latitude'=>$validated['latitude'],
+          'longitude'=>$validated['longitude'],
+        ];
+        $validated['address'] = json_encode($address);
+
+
+
 //      set photo
         $file = $request->file('photo');
         $fileName = uniqid() . '.' . $file->getClientOriginalExtension();

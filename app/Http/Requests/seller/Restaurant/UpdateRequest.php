@@ -25,6 +25,8 @@ class UpdateRequest extends FormRequest
             'name' => ['required'],
             'number' => ['required' ],
             'address' => ['required'],
+            'latitude'  => ['required'],
+            'longitude'  => ['required'],
             'bank_info' => ['required'],
             'restaurant_category_id' => ['required'],
             'is_open' => ['required'],

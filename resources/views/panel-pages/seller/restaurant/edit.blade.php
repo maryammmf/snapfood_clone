@@ -28,7 +28,7 @@
 <body>
 
 
-<div class="col-12 grid-margin stretch-card mt-5" style="height: 1200px">
+<div class="col-12 grid-margin stretch-card mt-5" >
     <div class="card mt-5">
         <div class="card-body">
             <h4 class="card-title">اصلاح کردن رستوران</h4>
@@ -48,10 +48,24 @@
                     <input type="text" name="number" value="{{ $restaurant->number }}" class="form-control" id="number">
                 </div>
 
-                <div class="form-group">
-                    <label for="address">ادرس</label>
-                    <input type="text" name="address" value="{{ $restaurant->address }}" class="form-control" id="address">
+                <div class="card-header mb-3">
+
+                    <div class="form-group ">
+                        <label for="address">ادرس</label>
+                        <input type="text" name="address" value="{{ $restaurant->address }}" class="form-control" id="address">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="latitude">عرض جغرافیایی</label>
+                        <input type="number" name="latitude" class="form-control" id="latitude">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="longitude">طول جغرافیایی</label>
+                        <input type="number" name="longitude" class="form-control" id="longitude">
+                    </div>
                 </div>
+
 
 
                 <div class="form-group">

@@ -14,6 +14,16 @@ class UserShowRestaurantResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            'id'=> $this->id,
+            'title'=>$this->name,
+            'type'=>$this->restaurant_category_id,
+            'address'=>'',
+            'is_open'=>'',
+            'image'=>'',
+            'score'=>'',
+            'comments_count'=>'',
+            'schedule'=>'',
+        ];
     }
 }

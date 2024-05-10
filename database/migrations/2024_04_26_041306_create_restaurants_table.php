@@ -20,6 +20,8 @@ return new class extends Migration
             $table->foreignIdFor(RestaurantCategory::class)->constrained();
             $table->string('number');
             $table->string('address');
+            $table->string('latitude')->nullable();
+            $table->string('longitude')->nullable();
             $table->string('bank_info');
             $table->string('is_open')->nullable();
             $table->string('schedule')->nullable();
