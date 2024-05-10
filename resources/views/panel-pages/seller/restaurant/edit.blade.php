@@ -28,7 +28,7 @@
 <body>
 
 
-<div class="col-12 grid-margin stretch-card mt-5" style="height: 550px">
+<div class="col-12 grid-margin stretch-card mt-5" style="height: 1000px">
     <div class="card mt-5">
         <div class="card-body">
             <h4 class="card-title">اصلاح کردن رستوران</h4>
@@ -57,6 +57,48 @@
                 <div class="form-group">
                     <label for="bank_info">اطلاعات بانکی</label>
                     <input type="text" name="bank_info" value="{{ $restaurant->bank_info }}" class="form-control" id="bank_info">
+                </div>
+
+                <div class="form-group card-header">
+                    <p >رستوران باز هست ؟</p>
+                    <label for="open">باز</label>
+                    <input type="radio" name="is_open" class="form-control" id="open" value="open">
+
+                    <label for="close">بسته</label>
+                    <input type="radio" name="is_open" class="form-control" id="close" value="close" >
+                </div>
+
+
+                <div class="form-group card-header">
+                    <p >برنامه کاری رستوران</p>
+                    <input type="checkbox" id="saturday" name="days[]" value="saturday">
+                    <input type="time" id="saturday" name="days_time[]" value="saturday" class="border-0">
+                    <label for="saturday">شنبه</label><br>
+
+                    <input type="checkbox" id="sunday" name="days[]" value="sunday">
+                    <input type="time" id="sunday" name="days_time[]" value="sunday" class="border-0">
+                    <label for="sunday">یکشنبه</label><br>
+
+                    <input type="checkbox" id="monday" name="days[]" value="monday">
+                    <input type="time" id="monday" name="days_time[]" value="monday" class="border-0">
+                    <label for="monday">دوشنبه</label><br>
+
+                    <input type="checkbox" id="tuesday" name="days[]" value="tuesday">
+                    <input type="time" id="tuesday" name="days_time[]" value="tuesday" class="border-0">
+                    <label for="tuesday">سه شنبه</label><br>
+
+                    <input type="checkbox" id="wednesday" name="days[]" value="wednesday">
+                    <input type="time" id="wednesday" name="days_time[]" value="wednesday" class="border-0">
+                    <label for="wednesday">چهارشنبه</label><br>
+
+                    <input type="checkbox" id="thursday" name="days[]" value="thursday">
+                    <input type="time" id="thursday" name="days_time[]" value="thursday" class="border-0">
+                    <label for="thursday">پنج شنبه</label><br>
+
+                    <input type="checkbox" id="friday" name="days[]" value="friday">
+                    <input type="time" id="friday" name="days_time[]" value="friday" class="border-0">
+                    <label for="friday">جمعه</label><br>
+
                 </div>
 
                 <div class="form-group">

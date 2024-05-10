@@ -60,7 +60,19 @@ class RestaurantController extends Controller
     public function update(UpdateRequest $request, Restaurant $restaurant)
     {
         $validated = $request->validated();
+        $schedule = [];
+        foreach ($validated['days'] as $key=>$day){
+            if (isset($validated['days_time'][$key])){
+            $schedule[]= "$day {$validated['days_time'][$key]}";
+            }
+        }
+
+        $validated['schedule'] = json_encode($schedule);
         $validated['seller_id'] = Auth::guard('seller')->id();
+
+        unset($validated['days']);
+        unset($validated['days_time']);
+
         $restaurant->update($validated);
         return redirect(route('restaurant.index'));
     }
@@ -68,10 +80,10 @@ class RestaurantController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-//    public function destroy(DestroyRequest $request)
-//    {
-//        Restaurant::query()->where('id' , $request->id)->delete();
-//        return back();
-//    }
+    public function destroy(DestroyRequest $request)
+    {
+        Restaurant::query()->where('id' , $request->id)->delete();
+        return back();
+    }
 
 }

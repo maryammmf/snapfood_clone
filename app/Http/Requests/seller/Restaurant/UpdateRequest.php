@@ -27,6 +27,10 @@ class UpdateRequest extends FormRequest
             'address' => ['required'],
             'bank_info' => ['required'],
             'restaurant_category_id' => ['required'],
+            'is_open' => ['required'],
+            'schedule' => ['string'],
+            'days' => ['required' , 'array'],
+            'days_time' => ['required' , 'array'],
 //            'seller_id' => ['required'],
         ];
     }

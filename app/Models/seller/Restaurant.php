@@ -17,9 +17,17 @@ class Restaurant extends Model
         'address',
         'bank_info',
         'seller_id',
+        'is_open',
+        'schedule',
+        'days',
+        'days_time',
     ];
 
     public function restaurantCategry(){
         return $this->belongsTo(RestaurantCategory::class);
     }
+
+    protected $casts = [
+        'schedule' => 'json'
+    ];
 }

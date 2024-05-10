@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('number');
             $table->string('address');
             $table->string('bank_info');
+            $table->string('is_open')->nullable();
+            $table->string('schedule')->nullable();
             $table->timestamps();
         });
     }

@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\seller\RestaurantController;
 use App\Http\Controllers\User\UserAddressController;
 use App\Http\Controllers\User\UserAuthCotroller;
 use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\User\UserRestaurantController;
 use Illuminate\Support\Facades\Route;
 
 //user login ------------------------
@@ -19,4 +21,5 @@ Route::resource('addresses' , UserAddressController::class )->only('store' , 'in
 
 
 //show restaurant info ------------------------
+Route::get('restaurants' , [UserRestaurantController::class , 'index']);
 
