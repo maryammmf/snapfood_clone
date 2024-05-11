@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\User;
 
+use App\Models\Admin\RestaurantCategory;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -14,16 +15,23 @@ class UserShowRestaurantResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+
+        $type = RestaurantCategory::query()->where('id' , $this->restaurant_category_id)->firstOrFail();
+
         return [
             'id'=> $this->id,
             'title'=>$this->name,
-            'type'=>$this->restaurant_category_id,
-            'address'=>'',
-            'is_open'=>'',
-            'image'=>'',
-            'score'=>'',
-            'comments_count'=>'',
-            'schedule'=>'',
+            'type'=>$type->name,
+            'address'=>[
+                'addreess'=>$this->address,
+                'latitude'=>$this->latitude,
+                'longitude'=>$this->longitude,
+            ],
+            'is_open'=>$this->is_open,
+            'image'=>secure_asset($this->photo),
+            'score'=>4.5,
+            'comments_count'=>23,
+            'schedule' =>$this->schedule,
         ];
     }
 }

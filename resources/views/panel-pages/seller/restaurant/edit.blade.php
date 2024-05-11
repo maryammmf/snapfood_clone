@@ -87,10 +87,10 @@
                 <div class="form-group card-header">
                     <p >رستوران باز هست ؟</p>
                     <label for="open">باز</label>
-                    <input type="radio" name="is_open" class="form-control" id="open" value="open">
+                    <input type="radio" name="is_open" class="form-control" id="open" value="true">
 
                     <label for="close">بسته</label>
-                    <input type="radio" name="is_open" class="form-control" id="close" value="close" >
+                    <input type="radio" name="is_open" class="form-control" id="close" value="false" >
                 </div>
 
 

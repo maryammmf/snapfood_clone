@@ -62,6 +62,7 @@ class RestaurantController extends Controller
     {
         $validated = $request->validated();
 
+//        dd($validated);
 //      set schedule
         $selectedDays = $validated['days'];
         $startTime = '11:00';
@@ -72,15 +73,8 @@ class RestaurantController extends Controller
                 'end' => $endTime
             ];
         }
-        $validated['schedule'] = json_encode($schedule);
-
-//        set address
-        $address = [
-          'address'=>$validated['address'],
-          'latitude'=>$validated['latitude'],
-          'longitude'=>$validated['longitude'],
-        ];
-        $validated['address'] = json_encode($address);
+//        dd($schedule);
+        $validated['schedule'] = $schedule;
 
 //      set photo
         $file = $request->file('photo');

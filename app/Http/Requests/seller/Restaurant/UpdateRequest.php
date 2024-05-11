@@ -33,9 +33,6 @@ class UpdateRequest extends FormRequest
             'schedule' => ['string'],
             'shipping_cost' => ['integer'],
             'days' => ['required', 'array' ],
-//            'start_time' => ['string'],
-//            'end_time' => ['string'],
-
         ];
     }
 }

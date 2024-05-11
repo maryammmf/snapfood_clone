@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\User\UserIndexRestaurantReesource;
+use App\Http\Resources\User\UserShowRestaurantResource;
 use App\Models\seller\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,11 +22,8 @@ class UserRestaurantController extends Controller
     }
 
     public function show(int $restaurantId){
-//        echo $restaurantId;
-//        dd($restaurantId);
         $restaurant = Restaurant::query()->where('id' , $restaurantId)->firstOrFail();
-        return $restaurant;
-//        dd($restaurant);
+        return UserShowRestaurantResource::make($restaurant);
     }
 
 
