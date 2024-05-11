@@ -21,10 +21,9 @@ class Restaurant extends Model
         'seller_id',
         'is_open',
         'schedule',
-        'days',
-        'days_time',
         'shipping_cost',
         'photo',
+
     ];
 
     public function restaurantCategry(){

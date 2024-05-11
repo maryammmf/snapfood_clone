@@ -52,7 +52,7 @@
 
                     <div class="form-group ">
                         <label for="address">ادرس</label>
-                        <input type="text" name="address" value="{{ $restaurant->address }}" class="form-control" id="address">
+                        <input type="text" name="address" class="form-control" id="address">
                     </div>
 
                     <div class="form-group">
@@ -96,34 +96,10 @@
 
                 <div class="form-group card-header">
                     <p >برنامه کاری رستوران</p>
-                    <input type="checkbox" id="saturday" name="days[]" value="saturday">
-                    <input type="time" id="saturday" name="days_time[]" value="saturday" class="border-0">
-                    <label for="saturday">شنبه</label><br>
-
-                    <input type="checkbox" id="sunday" name="days[]" value="sunday">
-                    <input type="time" id="sunday" name="days_time[]" value="sunday" class="border-0">
-                    <label for="sunday">یکشنبه</label><br>
-
-                    <input type="checkbox" id="monday" name="days[]" value="monday">
-                    <input type="time" id="monday" name="days_time[]" value="monday" class="border-0">
-                    <label for="monday">دوشنبه</label><br>
-
-                    <input type="checkbox" id="tuesday" name="days[]" value="tuesday">
-                    <input type="time" id="tuesday" name="days_time[]" value="tuesday" class="border-0">
-                    <label for="tuesday">سه شنبه</label><br>
-
-                    <input type="checkbox" id="wednesday" name="days[]" value="wednesday">
-                    <input type="time" id="wednesday" name="days_time[]" value="wednesday" class="border-0">
-                    <label for="wednesday">چهارشنبه</label><br>
-
-                    <input type="checkbox" id="thursday" name="days[]" value="thursday">
-                    <input type="time" id="thursday" name="days_time[]" value="thursday" class="border-0">
-                    <label for="thursday">پنج شنبه</label><br>
-
-                    <input type="checkbox" id="friday" name="days[]" value="friday">
-                    <input type="time" id="friday" name="days_time[]" value="friday" class="border-0">
-                    <label for="friday">جمعه</label><br>
-
+                    @foreach(['Saturday' , 'Sunday' , 'Monday' , 'Tuesday' , 'Wednesday' , 'Thursday' , 'Friday'] as $day)
+                        <input type="checkbox" id="{{$day}}" name="days[]" value="{{$day}}">
+                        <label for="{{$day}}">{{$day}}</label><br>
+                    @endforeach
                 </div>
 
                 <div class="form-group">

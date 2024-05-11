@@ -63,15 +63,16 @@ class RestaurantController extends Controller
         $validated = $request->validated();
 
 //      set schedule
-        $schedule = [];
-        foreach ($validated['days'] as $key=>$day){
-            if (isset($validated['days_time'][$key])){
-            $schedule[]= "$day {$validated['days_time'][$key]}";
-            }
+        $selectedDays = $validated['days'];
+        $startTime = '11:00';
+        $endTime = '23:00';
+        foreach ($selectedDays as $day) {
+            $schedule[$day] = [
+                'start' => $startTime,
+                'end' => $endTime
+            ];
         }
         $validated['schedule'] = json_encode($schedule);
-        unset($validated['days']);
-        unset($validated['days_time']);
 
 //        set address
         $address = [
@@ -81,14 +82,11 @@ class RestaurantController extends Controller
         ];
         $validated['address'] = json_encode($address);
 
-
-
 //      set photo
         $file = $request->file('photo');
         $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
         $file->move(public_path('images') , $fileName);
         $validated['photo'] = $fileName;
-
 
         $validated['seller_id'] = Auth::guard('seller')->id();
         $restaurant->update($validated);
