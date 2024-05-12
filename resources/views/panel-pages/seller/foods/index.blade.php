@@ -2,7 +2,7 @@
 @section('panel-seller.content')
 
 
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html>
 <head>
     <!-- Required meta tags -->
@@ -76,7 +76,7 @@
                             </td>
                             <td>
                                 @foreach($food->foodcategories as $category)
-                                {{ $category->name }}
+                                    {{ $category->name }}
                                 @endforeach
                             </td>
 
@@ -92,12 +92,12 @@
                                             <input type="submit" value="Delete" >
                                         </form>
                                     </li>
-                {{--                    <li><a href="{{ route('foods.edit') }}">Edit</a></li>--}}
+                                    {{--                    <li><a href="{{ route('foods.edit') }}">Edit</a></li>--}}
                                     <li>
                                         <form action="{{ route('foods.edit' , $food->id)}}" method="post">
                                             @csrf
                                             @method('GET')
-                {{--                            <input type="hidden" value="{{ $foods->id }}" name="id">--}}
+                                            {{--                            <input type="hidden" value="{{ $foods->id }}" name="id">--}}
                                             <input type="submit" value="Edit" >
                                         </form>
                                     </li>

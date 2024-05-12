@@ -4,6 +4,7 @@ use App\Http\Controllers\seller\RestaurantController;
 use App\Http\Controllers\User\UserAddressController;
 use App\Http\Controllers\User\UserAuthCotroller;
 use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\user\UserFoodsRestaurantCotroller;
 use App\Http\Controllers\User\UserRestaurantController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,4 +25,7 @@ Route::resource('addresses' , UserAddressController::class )->only('store' , 'in
 Route::get('restaurants' , [UserRestaurantController::class , 'index']);
 Route::get('restaurants/{restaurantId}' , [UserRestaurantController::class , 'show']);
 Route::post('restaurants/{isOpen}' , [UserRestaurantController::class , 'indexOpen']);
+
+//show food restaurant's info ------------------------
+Route::get('restaurants/{restaurantId}/foods' , [UserFoodsRestaurantCotroller::class , 'index']);
 

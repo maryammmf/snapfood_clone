@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminFoodCategoryController;
 use App\Models\Admin\Discount;
 use App\Models\Admin\FoodCategory;
+use App\Models\seller\Restaurant;
 use App\Models\seller\Seller;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -15,7 +16,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('foods', function (Blueprint $table) {
+        Schema::create('food', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('material')->nullable();
@@ -24,6 +25,7 @@ return new class extends Migration
             $table->foreignIdFor(FoodCategory::class)->constrained();
             $table->foreignIdFor(Discount::class)->nullable()->constrained();
             $table->foreignIdFor(Seller::class)->nullable()->constrained();
+            $table->foreignIdFor(Restaurant::class)->nullable()->constrained();
             $table->timestamps();
         });
     }

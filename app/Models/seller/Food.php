@@ -18,6 +18,7 @@ class Food extends Model
         'photo',
         'food_category_id',
         'discount_id',
+        'restaurant_id',
         'seller_id',
     ];
 

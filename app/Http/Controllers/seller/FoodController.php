@@ -9,6 +9,7 @@ use App\Http\Requests\seller\food\UpdateFoodRequest;
 use App\Models\Admin\Discount;
 use App\Models\Admin\FoodCategory;
 use App\Models\seller\Food;
+use App\Models\seller\Restaurant;
 use Illuminate\Support\Facades\Auth;
 
 class FoodController extends Controller
@@ -18,7 +19,6 @@ class FoodController extends Controller
      */
     public function index()
     {
-//        dd(Auth::id());
         $foods = Food::query()->where( 'seller_id' , Auth::id())->paginate(5);
         $foodCategories = FoodCategory::all();
         $discounts = Discount::all();
@@ -43,12 +43,17 @@ class FoodController extends Controller
     {
         $validated = $request->validated();
 
+
         $file = $request->file('photo');
         $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
         $file->move(public_path('images') , $fileName);
         $validated['photo'] = $fileName;
 
-        $validated['seller_id'] = Auth::id();
+        $seller_id = Auth::id();
+        $validated['seller_id'] = $seller_id;
+
+        $restaurantId = Restaurant::query()->where('seller_id' , $seller_id)->firstOrFail();
+        $validated['restaurant_id'] = $restaurantId->id;
 
         $food = Food::query()->create($validated);
         $food->foodcategories()->attach($request->food_category_id);
