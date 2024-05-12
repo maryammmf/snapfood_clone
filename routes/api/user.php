@@ -23,4 +23,5 @@ Route::resource('addresses' , UserAddressController::class )->only('store' , 'in
 //show restaurant info ------------------------
 Route::get('restaurants' , [UserRestaurantController::class , 'index']);
 Route::get('restaurants/{restaurantId}' , [UserRestaurantController::class , 'show']);
+Route::post('restaurants/{isOpen}' , [UserRestaurantController::class , 'indexOpen']);
 
