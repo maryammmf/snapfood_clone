@@ -17,6 +17,7 @@ class UserIndexFoodsRestaurantResource extends JsonResource
     public function toArray(Request $request): array
     {
         $foodCategory = FoodCategory::query()->where('id' , $this->food_category_id)->firstOrFail();
+
         $off = null;
         if ($this->discount){
             $off = [
@@ -25,15 +26,7 @@ class UserIndexFoodsRestaurantResource extends JsonResource
             ];
         }
 
-//        $showof = null;
-//
-//        if ($off !== NULL){
-//            $showof = 'showofffff';
-//
-//        }
-
-
-        return [
+        $categories = [
             'categories' => [
                 'id' => $foodCategory->id,
                 'title' => $foodCategory->name,
@@ -41,12 +34,17 @@ class UserIndexFoodsRestaurantResource extends JsonResource
                     'id' => $this->id,
                     'title' => $this->name,
                     'price' => $this->price,
-                    'off' => $off,
                     'row_material' => $this->material,
                     'image' => $this->photo,
-                    ]
+                ]
             ]
         ];
 
+        if (!is_null($off)) {
+            $categories['showoff'] = $off;
+        }
+        return $categories;
+
     }
+
 }

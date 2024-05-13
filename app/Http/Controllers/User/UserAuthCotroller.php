@@ -13,13 +13,19 @@ class UserAuthCotroller extends Controller
 {
     public function login(UserLoginRequst $request){
         $user = User::query()->where('email' , $request->email)->firstOrFail();
+
         if (!Hash::check(request('password') , $user->password)){
             abort(Response::HTTP_UNAUTHORIZED);
         }
         $token = $user->createToken('auth')->plainTextToken;
+
+        Auth::loginUsingId($user->id);
+        $user = Auth::guard('customer')->user();
+
+
         return response()->json([
             'token' => $token,
-            'user_id' => Auth::id()
+            'user_id' => $user->id
         ]);
     }
 

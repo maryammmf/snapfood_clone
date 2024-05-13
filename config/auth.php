@@ -1,5 +1,9 @@
 <?php
 
+use App\Models\Admin\Admin;
+use App\Models\seller\Seller;
+use App\Models\User\User;
+
 return [
 
     /*
@@ -51,6 +55,11 @@ return [
             'provider' => 'sellers',
         ],
 
+        'customer' => [
+            'driver' => 'sanctum',
+            'provider' => 'customers'
+        ],
+
     ],
 
     /*
@@ -73,17 +82,22 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => \App\Models\User\User::class,
+            'model' => User::class,
         ],
 
         'admins' => [
             'driver' => 'eloquent',
-            'model' => \App\Models\Admin\Admin::class,
+            'model' => Admin::class,
         ],
 
         'sellers' => [
             'driver' => 'eloquent',
-            'model' => \App\Models\seller\Seller::class,
+            'model' => Seller::class,
+        ],
+
+        'customers' => [
+            'driver' => 'eloquent',
+            'model' => User::class,
         ],
 
         // 'users' => [

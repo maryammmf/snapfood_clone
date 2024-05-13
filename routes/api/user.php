@@ -3,6 +3,7 @@
 use App\Http\Controllers\seller\RestaurantController;
 use App\Http\Controllers\User\UserAddressController;
 use App\Http\Controllers\User\UserAuthCotroller;
+use App\Http\Controllers\user\UserCartController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\user\UserFoodsRestaurantCotroller;
 use App\Http\Controllers\User\UserRestaurantController;
@@ -28,4 +29,10 @@ Route::post('restaurants/{isOpen}' , [UserRestaurantController::class , 'indexOp
 
 //show food restaurant's info ------------------------
 Route::get('restaurants/{restaurantId}/foods' , [UserFoodsRestaurantCotroller::class , 'index']);
+
+
+// cart OR basket  --------------------------------------------------
+//Route::resource('carts' , UserCartController::class)
+//    ->only('index' , 'store' ,'update' , 'show');
+Route::middleware('auth:customer')->post('carts/add' , [UserCartController::class , 'store']);
 
