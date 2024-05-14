@@ -38,4 +38,5 @@ Route::middleware('auth:customer')->post('carts/add' , [UserCartController::clas
 Route::middleware('auth:customer')->get('carts' , [UserCartController::class , 'index']);
 Route::middleware('auth:customer')->patch('carts/{cartId}' , [UserCartController::class , 'update']);
 Route::middleware('auth:customer')->get('carts/{cartId}' , [UserCartController::class , 'show']);
+Route::middleware('auth:customer')->get('carts/{cartId}/pay' , [UserCartController::class , 'cartPaid']);
 

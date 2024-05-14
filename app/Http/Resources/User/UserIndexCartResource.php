@@ -18,6 +18,7 @@ class UserIndexCartResource extends JsonResource
     {
         $restaurant = Restaurant::query()->where('id' , $this->restaurant_id)->firstOrFail();
         $food = Food::query()->where('id' , $this->food_id)->firstOrFail();
+
         return [
             'carts' => [
                 'id' => $this->id,
