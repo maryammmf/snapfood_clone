@@ -4,6 +4,7 @@ namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\user\UserCardStoreRequest;
+use App\Http\Requests\user\UserUpdateCartRequest;
 use App\Http\Resources\user\UserIndexCartResource;
 use App\Models\seller\Food;
 use App\Models\User\Cart;
@@ -18,7 +19,6 @@ class UserCartController extends Controller
     public function index()
     {
         $carts = Cart::all();
-//        dd($carts);
         return UserIndexCartResource::collection($carts);
     }
 
@@ -55,9 +55,13 @@ class UserCartController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UserUpdateCartRequest $request, int $cartId)
     {
-        //
+        $validated = $request->validated();
+        Cart::query()->where('id' , $cartId)->update($validated);
+        return response()->json([
+            'msg' => __('response.cart_update_successfully')
+        ]);
     }
 
 
