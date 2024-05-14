@@ -35,4 +35,5 @@ Route::get('restaurants/{restaurantId}/foods' , [UserFoodsRestaurantCotroller::c
 //Route::resource('carts' , UserCartController::class)
 //    ->only('index' , 'store' ,'update' , 'show');
 Route::middleware('auth:customer')->post('carts/add' , [UserCartController::class , 'store']);
+Route::middleware('auth:customer')->get('carts' , [UserCartController::class , 'index']);
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\user\UserCardStoreRequest;
+use App\Http\Resources\user\UserIndexCartResource;
 use App\Models\seller\Food;
 use App\Models\User\Cart;
 use Illuminate\Http\Request;
@@ -16,7 +17,9 @@ class UserCartController extends Controller
      */
     public function index()
     {
-        //
+        $carts = Cart::all();
+//        dd($carts);
+        return UserIndexCartResource::collection($carts);
     }
 
 
@@ -32,10 +35,12 @@ class UserCartController extends Controller
         $validated['restaurant_id'] = $food->restaurant_id;
         $validated['user_id'] = \request()->user()->id;
 
-//        $user = \request()->user();
-//        dd($user);
+        $cart = Cart::query()->create($validated);
 
-        Cart::query()->create($validated);
+        return response()->json([
+            'msg:' => __('response.cart_store_successfully'),
+            'cart_id' => $cart->id,
+        ]);
     }
 
     /**
