@@ -46,9 +46,10 @@ class UserCartController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(int $cartId)
     {
-        //
+        $carts = Cart::query()->where('id' , $cartId)->get();
+        return UserIndexCartResource::collection($carts);
     }
 
 
