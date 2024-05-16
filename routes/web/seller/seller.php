@@ -60,5 +60,5 @@ Route::prefix('panel_seller/foods/find')
 
 
 //----- orders -------------- orders -----------------------
-//Route::get('panel_seller/orders' , [OrderController::class , 'index'])->name('order.index');
+Route::get('panel_seller/orders' , [OrderController::class , 'index'])->name('order.index');
 Route::post('panel_seller/{orderId}' , [OrderController::class , 'changeStatus'])->name('order.changeStatus');

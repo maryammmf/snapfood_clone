@@ -22,11 +22,16 @@ class OrderController extends Controller
 
 
     public function changeStatus(Request $request , int $orderId){
-//        dd($request->all() , $orderId);
         Order::query()->where('id' ,$orderId )->update(['status' => $request['status']]);
         return back();
     }
 
+
+    public function index()
+    {
+        $orders = Order::query()->paginate(3);
+        return view('panel-pages.seller.orders.index' , compact('orders'));
+    }
 
 
     /**
