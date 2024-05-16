@@ -21,6 +21,7 @@ class UserCardStoreRequest extends FormRequest
      */
     public function rules(): array
     {
+
         return [
             'food_id' => ['required' , 'integer' , 'exists:food,id'],
             'count' => ['required' , 'integer' , 'max:10'],

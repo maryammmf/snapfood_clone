@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\seller\Food;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,4 +15,8 @@ class Order extends Model
         'price',
         'status',
     ];
+
+//    public function foods(){
+//        return $this->belongsToMany(Food::class);
+//    }
 }

@@ -30,21 +30,15 @@ class UserCartController extends Controller
     public function store(UserCardStoreRequest $request)
     {
         $validated = $request->validated();
-
         $food = Food::query()->where('id' , $validated['food_id'])->firstOrFail();
         $validated['food_id'] = $food->id;
         $validated['restaurant_id'] = $food->restaurant_id;
         $validated['user_id'] = \request()->user()->id;
 
-
-//        dd((int)($food->price) * (int)($validated['count']) );
         $cardPrice = (int)($food->price) * (int)($validated['count']);
         $validated['price'] = $cardPrice;
 
-
-
         $cart = Cart::query()->create($validated);
-
         return response()->json([
             'msg:' => __('response.cart_store_successfully'),
             'cart_id' => $cart->id,
@@ -78,6 +72,9 @@ class UserCartController extends Controller
         $validated['cart_id'] = $cartId;
         $validated['price'] = $cart->price;
         Order::query()->create($validated);
+        return response()->json([
+            'msg' => __('response.order_add_successfully')
+        ]);
     }
 
 

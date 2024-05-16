@@ -73,18 +73,28 @@
         </li>
 
         <li class="nav-item">
+            <a class="nav-link" href="pages/tables/basic-table.html">
+                <i class="mdi fa-cart-arrow-down menu-icon"></i>
+                <span class="menu-title">سفارش ها</span>
+            </a>
+        </li>
+
+
+
+        <li class="nav-item">
+            <a class="nav-link" href="{{route('restaurant.index')}}">
+                <i class="mdi fa-edit menu-icon"></i>
+                <span class="menu-title">ویرایش اطلاعات رستوران</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
             <a class="nav-link" href="pages/forms/basic_elements.html">
                 <i class="mdi mdi-format-list-bulleted menu-icon"></i>
                 <span class="menu-title">ویرایش حساب کاربری</span>
             </a>
         </li>
 
-        <li class="nav-item">
-            <a class="nav-link" href="{{route('restaurant.index')}}">
-                <i class="mdi mdi-format-list-bulleted menu-icon"></i>
-                <span class="menu-title">ویرایش اطلاعات رستوران</span>
-            </a>
-        </li>
 {{--        <li class="nav-item">--}}
 {{--            <span class="nav-link" href="#">--}}
 {{--              <span class="menu-title">Docs</span>--}}

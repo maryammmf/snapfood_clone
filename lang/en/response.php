@@ -6,4 +6,5 @@ return[
     'update_user_successfully' => 'current user info updated successfully',
     'cart_store_successfully' =>'food added to cart successfully',
     'cart_update_successfully' =>'cart update successfully',
+    'order_add_successfully' =>'order added successfully',
 ];

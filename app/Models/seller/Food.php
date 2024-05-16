@@ -4,6 +4,7 @@ namespace App\Models\seller;
 
 use App\Models\Admin\Discount;
 use App\Models\Admin\FoodCategory;
+use App\Models\Order;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -29,5 +30,9 @@ class Food extends Model
     public function discount(){
         return $this->belongsTo(Discount::class , 'discount_id');
     }
+
+//    public function orders(){
+//        return $this->belongsToMany(Order::class);
+//    }
 
 }

@@ -15,6 +15,7 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Cart::class)->constrained();
+//            $table->string('food_id');
             $table->string('price');
             $table->string('status')->default('در حال بررسی');
             $table->timestamps();

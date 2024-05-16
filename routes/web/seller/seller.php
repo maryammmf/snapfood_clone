@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\seller\FindFoodController;
 use App\Http\Controllers\seller\FoodController;
+use App\Http\Controllers\seller\OrderController;
 use App\Http\Controllers\seller\SellerAuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,9 +31,7 @@ Route::prefix('auth')
 
 
 //seller panel ---------------------
-Route::get('panel_seller' , function (){
-    return view('sellerMain');
-    })
+Route::get('panel_seller' , [OrderController::class , 'progressOrders'])
     ->middleware('auth:seller')
     ->name('panel.seller');
 
@@ -58,3 +57,8 @@ Route::prefix('panel_seller/foods/find')
         Route::get('/' , 'searchByName')->name('name');
         Route::post('/' , 'searchByCategory')->name('category');
 });
+
+
+//----- orders -------------- orders -----------------------
+//Route::get('panel_seller/orders' , [OrderController::class , 'index'])->name('order.index');
+Route::post('panel_seller/{orderId}' , [OrderController::class , 'changeStatus'])->name('order.changeStatus');
