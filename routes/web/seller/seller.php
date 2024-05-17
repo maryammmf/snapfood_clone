@@ -27,12 +27,12 @@ Route::prefix('auth')
     Route::get('/seller' , 'logout')->name('seller.logout');
 });
 
-
+//->middleware('register.restaurant')
 
 
 //seller panel ---------------------
 Route::get('panel_seller' , [OrderController::class , 'progressOrders'])
-    ->middleware('auth:seller')
+    ->middleware(['auth:seller' , 'register.restaurant'])
     ->name('panel.seller');
 
 
@@ -40,11 +40,11 @@ Route::get('panel_seller' , [OrderController::class , 'progressOrders'])
 //foods crud -------------------------
 
 Route::resource('panel_seller/foods' , FoodController::class)
-    ->middleware('auth:seller')
+    ->middleware(['auth:seller' , 'register.restaurant'])
     ->except('show' , 'destroy');
 
 Route::delete('panel_seller/foods' , [FoodController::class ,'destroy'])
-    ->middleware('auth:seller')
+    ->middleware(['auth:seller' , 'register.restaurant'])
     ->name('foods.destroy');
 
 
@@ -52,7 +52,7 @@ Route::delete('panel_seller/foods' , [FoodController::class ,'destroy'])
 //seller find foods with name or category
 Route::prefix('panel_seller/foods/find')
     ->controller(FindFoodController::class)
-    ->middleware('auth:seller')
+    ->middleware(['auth:seller' , 'register.restaurant'])
     ->name('find.foods.by.')->group(function (){
         Route::get('/' , 'searchByName')->name('name');
         Route::post('/' , 'searchByCategory')->name('category');
@@ -60,5 +60,7 @@ Route::prefix('panel_seller/foods/find')
 
 
 //----- orders -------------- orders -----------------------
-Route::get('panel_seller/orders' , [OrderController::class , 'index'])->name('order.index');
-Route::post('panel_seller/{orderId}' , [OrderController::class , 'changeStatus'])->name('order.changeStatus');
+Route::get('panel_seller/orders' , [OrderController::class , 'index'])->middleware(['auth:seller' , 'register.restaurant'])
+    ->name('order.index');
+Route::post('panel_seller/{orderId}' , [OrderController::class , 'changeStatus'])->middleware(['auth:seller' , 'register.restaurant'])
+    ->name('order.changeStatus');

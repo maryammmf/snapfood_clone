@@ -64,7 +64,7 @@
                             <div class="card-body px-0 overflow-auto">
                                 <h4 class="card-title pl-4">سفارش های در حال انجام</h4>
                                 <div class="table-responsive">
-                                    <table class="table table-striped">
+                                    <table class="table table-striped mt-3">
                                         <tr>
                                             <th>شماره سفارش</th>
                                             <th>وضعیت سفارش</th>
@@ -600,7 +600,6 @@
                     </div>
                 </div>
             </div>
-            <!--browser stats ends-->
         </div>
     </div>
 </div>

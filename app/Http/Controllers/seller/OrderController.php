@@ -5,8 +5,10 @@ namespace App\Http\Controllers\seller;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\seller\Food;
+use App\Models\seller\Restaurant;
 use App\Models\User\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
@@ -16,7 +18,12 @@ class OrderController extends Controller
      */
     public function progressOrders()
     {
-        $orders = Order::query()->where('status' , '=' , 'در حال بررسی')->paginate(3);
+        $restaurantId = Cart::all()->pluck('restaurant_id');
+        $sellerIds = Restaurant::query()->whereIn('id' , $restaurantId)->firstOrFail();
+
+        $sellerId = $sellerIds->seller_id;
+//        dd($sellerIds->seller_id );
+        $orders = Order::query()->whereIn('status' , ['در حال بررسی', 'در حال آماده سازی' , 'ارسال به مقصد'])->paginate(3);
         return view('sellerMain' , compact('orders'));
     }
 
@@ -34,21 +41,7 @@ class OrderController extends Controller
     }
 
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
      * Display the specified resource.

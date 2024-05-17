@@ -27,7 +27,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="{{route('panel.seller')}}">
                 <i class="mdi mdi-home menu-icon"></i>
                 <span class="menu-title">داشبورد</span>
             </a>
@@ -74,23 +74,21 @@
 
         <li class="nav-item">
             <a class="nav-link" href="{{ route('order.index') }}">
-                <i class="mdi fa-cart-arrow-down menu-icon"></i>
+                <i class="mdi mdi-cart-outline menu-icon"></i>
                 <span class="menu-title">سفارش ها</span>
             </a>
         </li>
 
-
-
         <li class="nav-item">
             <a class="nav-link" href="{{route('restaurant.index')}}">
-                <i class="mdi fa-edit menu-icon"></i>
+                <i class="mdi mdi-format-list-bulleted menu-icon"></i>
                 <span class="menu-title">ویرایش اطلاعات رستوران</span>
             </a>
         </li>
 
         <li class="nav-item">
             <a class="nav-link" href="pages/forms/basic_elements.html">
-                <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+                <i class="mdi mdi-account-edit menu-icon"></i>
                 <span class="menu-title">ویرایش حساب کاربری</span>
             </a>
         </li>
