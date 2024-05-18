@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('food_food_category', function (Blueprint $table) {
             $table->foreignIdFor(Food::class)->constrained()->onDelete('CASCADE');
             $table->foreignIdFor(FoodCategory::class)->constrained()->onDelete('CASCADE');
+            $table->unique(['food_id' , 'food_category_id']);
         });
     }
 

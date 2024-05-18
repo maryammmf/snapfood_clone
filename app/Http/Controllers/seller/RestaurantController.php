@@ -41,6 +41,7 @@ class RestaurantController extends Controller
     {
 //        dd($request->all());
         $validated = $request->validated();
+//        dd($validated);
         Restaurant::query()->create($validated);
         return redirect(route('seller.login.show'));
     }

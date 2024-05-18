@@ -35,6 +35,8 @@ class UserCartController extends Controller
         $validated['restaurant_id'] = $food->restaurant_id;
         $validated['user_id'] = \request()->user()->id;
 
+        $validated['seller_id'] = $food->seller_id;
+
         $cardPrice = (int)($food->price) * (int)($validated['count']);
         $validated['price'] = $cardPrice;
 

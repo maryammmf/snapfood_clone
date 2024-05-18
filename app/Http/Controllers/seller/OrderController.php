@@ -18,6 +18,7 @@ class OrderController extends Controller
      */
     public function progressOrders()
     {
+        dd('progressOrders');
         $restaurantId = Cart::all()->pluck('restaurant_id');
         $sellerIds = Restaurant::query()->whereIn('id' , $restaurantId)->firstOrFail();
 
@@ -28,7 +29,7 @@ class OrderController extends Controller
     }
 
 
-    public function changeStatus(Request $request , int $orderId){
+    public function changeStatus(Request $request , $orderId){
         Order::query()->where('id' ,$orderId )->update(['status' => $request['status']]);
         return back();
     }

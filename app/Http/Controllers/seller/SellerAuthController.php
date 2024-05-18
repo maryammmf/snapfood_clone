@@ -31,8 +31,11 @@ class SellerAuthController extends Controller
     public function submitLogin(SubmitLoginRequest $request){
         if (Auth::guard('seller')->attempt($request->validated())){
             $request->session()->regenerate();
+
             return redirect(route('panel.seller'));
+
         }
+
         return back()->withErrors([
             'message'=>'اطلاعات وارد شده صحیح نمی باشد.'
         ]);

@@ -23,7 +23,7 @@
 <h1 class="text-success-emphasis shadow-sm m-4 bc mb-5">REGISTER RESTAURANT FORM</h1>
 
 <main class="shadow-lg" style="width: 1500px ; height: 520px ; margin-left: 80px">
-    <form action="{{ route('restaurant.store') }}" method="post" class="m-4 bc">
+    <form action="{{ route('restaurant.store' , $sellerId) }}" method="post" class="m-4 bc">
         @csrf
 
         <div>

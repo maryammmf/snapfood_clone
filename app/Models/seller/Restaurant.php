@@ -3,6 +3,8 @@
 namespace App\Models\seller;
 
 use App\Models\Admin\RestaurantCategory;
+use App\Models\Order;
+use App\Models\User\Cart;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -26,11 +28,29 @@ class Restaurant extends Model
 
     ];
 
-    public function restaurantCategry(){
-        return $this->belongsTo(RestaurantCategory::class);
-    }
 
     protected $casts = [
         'schedule' => 'json'
     ];
+
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class);
+    }
+
+
+    public function carts()
+    {
+        return $this->hasMany(Cart::class);
+    }
+
+    public function restaurantCategry(){
+        return $this->belongsTo(RestaurantCategory::class);
+    }
+
+
+    public function seller()
+    {
+        return $this->hasOne(Seller::class);
+    }
 }

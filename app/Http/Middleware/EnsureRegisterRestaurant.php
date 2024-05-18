@@ -20,7 +20,9 @@ class EnsureRegisterRestaurant
         $seller = Auth::guard('seller')->id();
         $restaurant = Restaurant::query()->where('seller_id' , $seller)->exists();
 
+//        dd($seller , $restaurant);
         if (!$restaurant){
+//            dd(666);
             return abort(Response::HTTP_UNAUTHORIZED);
         }
         return $next($request);

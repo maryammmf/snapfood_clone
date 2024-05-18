@@ -21,6 +21,7 @@ class RegisterRequest extends FormRequest
      */
     public function rules(): array
     {
+//        dd(11);
         return [
             'name' => ['required'],
             'number' => ['required' ],

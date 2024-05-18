@@ -2,6 +2,7 @@
 
 use App\Models\seller\Food;
 use App\Models\seller\Restaurant;
+use App\Models\seller\Seller;
 use App\Models\User\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -16,9 +17,10 @@ return new class extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(User::class)->constrained();
-            $table->foreignIdFor(Food::class)->constrained();
-            $table->foreignIdFor(Restaurant::class)->constrained();
+            $table->foreignIdFor(User::class)->constrained()->onDelete('cascade');
+            $table->foreignIdFor(Food::class)->constrained()->onDelete('cascade');
+            $table->foreignIdFor(Seller::class)->constrained()->onDelete('cascade');
+            $table->foreignIdFor(Restaurant::class)->constrained()->onDelete('cascade');
             $table->string('count');
             $table->string('price');
             $table->timestamps();
