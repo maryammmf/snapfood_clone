@@ -6,6 +6,7 @@ use App\Models\Order;
 use App\Models\seller\Food;
 use App\Models\seller\Restaurant;
 use App\Models\seller\Seller;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -19,6 +20,7 @@ class Cart extends Model
         'restaurant_id',
         'count',
         'price',
+        'seller_id',
     ];
 
     public function order(){
@@ -44,5 +46,11 @@ class Cart extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function scopeCheckCartId(Builder $query , int $cartId)
+    {
+        return $query->where('id' , $cartId);
+    }
+
 
 }

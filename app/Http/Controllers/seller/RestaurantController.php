@@ -20,7 +20,7 @@ class RestaurantController extends Controller
     public function index()
     {
         $userId = Auth::id();
-        $restaurants = Restaurant::query()->where('seller_id' , Auth::id())->get();
+        $restaurants = Restaurant::checkSeller()->get();
         return view('panel-pages.seller.restaurant.index' , compact('restaurants'));
     }
 
@@ -39,9 +39,7 @@ class RestaurantController extends Controller
      */
     public function store(RegisterRequest $request)
     {
-//        dd($request->all());
         $validated = $request->validated();
-//        dd($validated);
         Restaurant::query()->create($validated);
         return redirect(route('seller.login.show'));
     }
@@ -64,7 +62,6 @@ class RestaurantController extends Controller
     {
         $validated = $request->validated();
 
-//        dd($validated);
 //      set schedule
         $selectedDays = $validated['days'];
         $startTime = '11:00';
@@ -75,7 +72,6 @@ class RestaurantController extends Controller
                 'end' => $endTime
             ];
         }
-//        dd($schedule);
         $validated['schedule'] = $schedule;
 
 //      set photo

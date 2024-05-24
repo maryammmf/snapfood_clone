@@ -27,7 +27,6 @@ Route::prefix('auth')
     Route::get('/seller' , 'logout')->name('seller.logout');
 });
 
-//->middleware('register.restaurant')
 
 
 //seller panel ---------------------

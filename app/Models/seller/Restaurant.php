@@ -5,8 +5,10 @@ namespace App\Models\seller;
 use App\Models\Admin\RestaurantCategory;
 use App\Models\Order;
 use App\Models\User\Cart;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Restaurant extends Model
 {
@@ -25,6 +27,7 @@ class Restaurant extends Model
         'schedule',
         'shipping_cost',
         'photo',
+        'seller_id'
 
     ];
 
@@ -53,4 +56,15 @@ class Restaurant extends Model
     {
         return $this->hasOne(Seller::class);
     }
+
+    public function scopeCheckSeller(Builder $query)
+    {
+        return $query->where( 'seller_id' , Auth::id());
+    }
+
+    public function scopeCheckRestaurantId( $query , $restaurantId)
+    {
+        return $query->whereIn('id' , $restaurantId);
+    }
+
 }

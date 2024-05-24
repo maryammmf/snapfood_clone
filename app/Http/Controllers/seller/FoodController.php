@@ -19,10 +19,9 @@ class FoodController extends Controller
      */
     public function index()
     {
-        $foods = Food::query()->where( 'seller_id' , Auth::id())->paginate(5);
+        $foods = Food::checkSeller()->paginate(5);
         $foodCategories = FoodCategory::all();
         $discounts = Discount::all();
-
         return view('panel-pages.seller.foods.index' , compact('foods' , 'foodCategories' , 'discounts'));
     }
 
@@ -42,7 +41,6 @@ class FoodController extends Controller
     public function store(AddFoodRequest $request)
     {
         $validated = $request->validated();
-
 
         $file = $request->file('photo');
         $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
@@ -77,10 +75,8 @@ class FoodController extends Controller
      */
     public function update(UpdateFoodRequest $request, Food $food)
     {
-//        dd('first');
         $validated = $request->validated();
         if ($request->hasFile('photo')){
-//            dd('44');
             $file = $request->file('photo');
             $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
             $file->move(public_path('images') , $fileName);

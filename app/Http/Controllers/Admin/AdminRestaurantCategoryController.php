@@ -44,7 +44,6 @@ class AdminRestaurantCategoryController extends Controller
     public function edit(int $id)
     {
         $restaurantCategory = RestaurantCategory::query()->where('id' , $id)->first();
-//        dd($restaurantCategory);
         return view('panel-pages.admin.category.edit.restaurant' , compact('restaurantCategory' , 'id'));
     }
 

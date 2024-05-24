@@ -7,6 +7,7 @@ use App\Models\seller\Restaurant;
 use App\Models\seller\Seller;
 use App\Models\User\Cart;
 use App\Models\User\User;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -16,6 +17,9 @@ class Order extends Model
 
     protected $fillable = [
         'cart_id',
+        'restaurant_id',
+        'seller_id',
+        'user_id',
         'price',
         'status',
     ];
@@ -41,7 +45,16 @@ class Order extends Model
         return $this->hasMany(Cart::class);
     }
 
-//    public function foods(){
-//        return $this->belongsToMany(Food::class);
-//    }
+    public function scopeUpdateStatus($query , $orderId , $status)
+    {
+        return $query->where('id' ,$orderId )->update(['status' => $status]);
+    }
+
+    public function scopeCheckStatus($query)
+    {
+        return $query->whereIn('status' , ['در حال بررسی', 'در حال آماده سازی' , 'ارسال به مقصد']);
+    }
+
+
+
 }

@@ -63,6 +63,9 @@
                     <div class="row">
                             <div class="card-body px-0 overflow-auto">
                                 <h4 class="card-title pl-4">سفارش های در حال انجام</h4>
+                                @if($orders->isEmpty())
+                                    <p>سفارش در حال انجام نداریم فعلا ....</p>
+                                @else
                                 <div class="table-responsive">
                                     <table class="table table-striped mt-3">
                                         <tr>
@@ -94,6 +97,7 @@
                                     </table>
                                 </div>
                                 {{$orders->links()}}
+                                @endif
                             </div>
                 </div>
             </div>
