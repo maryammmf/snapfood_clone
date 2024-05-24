@@ -1,7 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\user\AddCommentRequest;
+use App\Models\User\Comment;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -25,9 +28,14 @@ class CommentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(AddCommentRequest $request)
     {
-        //
+        $validated = $request->validated();
+        $validated['user_id'] =1;
+        Comment::query()->create($validated);
+        return response()->json([
+            'msg'=>__('response.comment_created_successfully')
+        ]);
     }
 
     /**

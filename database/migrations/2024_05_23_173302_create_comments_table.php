@@ -2,6 +2,7 @@
 
 use App\Models\seller\Restaurant;
 use App\Models\seller\Seller;
+use App\Models\User\Cart;
 use App\Models\User\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -16,10 +17,11 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->string('comment');
+            $table->string('message');
+            $table->string('score');
+//            $table->string('cart_id');
+            $table->foreignIdFor(Cart::class);
             $table->foreignIdFor(User::class);
-            $table->foreignIdFor(Restaurant::class);
-            $table->foreignIdFor(Seller::class);
             $table->timestamps();
         });
     }

@@ -58,4 +58,9 @@ class User extends Authenticatable
     public function userAddresses(){
         return $this->hasMany(UserAddress::class);
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

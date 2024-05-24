@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\seller\food;
+namespace App\Http\Requests\user;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class DeleteFoodRequest extends FormRequest
+class AddCommentRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,7 +22,9 @@ class DeleteFoodRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id' => ['required' , 'exists:food,id']
+            'cart_id' => ['required'],
+            'score' => ['required'],
+            'message' => ['required'],
         ];
     }
 }

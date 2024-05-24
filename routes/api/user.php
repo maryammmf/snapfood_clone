@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\seller\RestaurantController;
+use App\Http\Controllers\User\CommentController;
 use App\Http\Controllers\User\UserAddressController;
 use App\Http\Controllers\User\UserAuthCotroller;
 use App\Http\Controllers\user\UserCartController;
@@ -40,3 +41,6 @@ Route::middleware('auth:customer')->patch('carts/{cartId}' , [UserCartController
 Route::middleware('auth:customer')->get('carts/{cartId}' , [UserCartController::class , 'show']);
 Route::middleware('auth:customer')->get('carts/{cartId}/pay' , [UserCartController::class , 'cartPaid']);
 
+
+// Comment ------------------------
+Route::middleware('auth:customer')->get('comments' , [CommentController::class , 'store']);
