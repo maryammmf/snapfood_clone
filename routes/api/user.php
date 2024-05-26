@@ -44,3 +44,4 @@ Route::middleware('auth:customer')->get('carts/{cartId}/pay' , [UserCartControll
 
 // Comment ------------------------
 Route::middleware('auth:customer')->get('comments' , [CommentController::class , 'store']);
+Route::middleware('auth:customer')->get('comments/restaurant_id/{restaurantId}' , [CommentController::class , 'index']);

@@ -9,6 +9,7 @@ use App\Models\seller\Seller;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Cart extends Model
 {
@@ -47,10 +48,21 @@ class Cart extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function comments()
+    {
+       return $this->hasMany(Comment::class);
+    }
+
     public function scopeCheckCartId(Builder $query , int $cartId)
     {
         return $query->where('id' , $cartId);
     }
+
+    public function scopeCheckCartRestaurantId($query , $restaurantId)
+    {
+        return $query->where('restaurant_id' , $restaurantId);
+    }
+
 
 
 }

@@ -40,6 +40,7 @@
                         <th>وضعیت سفارش</th>
                         <th>قیمت</th>
                         <th>تاریخ ثبت</th>
+                        <th>نظرات</th>
                     </tr>
                     @foreach($orders as $order)
                         <tr>
@@ -47,6 +48,7 @@
                             <td>{{$order->status}}</td>
                             <td>{{$order->price}}</td>
                             <td>{{$order->created_at}}</td>
+                            <td><a href="">نمایش نظرات</a></td>
                         </tr>
                     @endforeach
                 </table>

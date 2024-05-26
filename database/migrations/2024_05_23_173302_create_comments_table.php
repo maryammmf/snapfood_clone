@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\seller\Food;
 use App\Models\seller\Restaurant;
 use App\Models\seller\Seller;
 use App\Models\User\Cart;
@@ -20,8 +21,9 @@ return new class extends Migration
             $table->string('message');
             $table->string('score');
 //            $table->string('cart_id');
-            $table->foreignIdFor(Cart::class);
-            $table->foreignIdFor(User::class);
+            $table->foreignIdFor(Cart::class)->constrained()->onDelete('cascade');
+            $table->foreignIdFor(User::class)->constrained()->onDelete('cascade');
+            $table->foreignIdFor(Food::class)->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

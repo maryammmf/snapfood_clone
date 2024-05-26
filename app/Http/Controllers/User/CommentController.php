@@ -4,17 +4,26 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\user\AddCommentRequest;
+use App\Http\Resources\CommentIndexResource;
+use App\Models\User\Cart;
 use App\Models\User\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(int $restaurantId)
     {
-        //
+        $cartId = Cart::checkCartRestaurantId($restaurantId)->pluck('id');
+        $comment = Comment::filterComment($cartId)->get();
+//        dd($comment->toArray());
+        return response()->json([
+            'comments' => CommentIndexResource::collection($comment)
+        ]);
+
     }
 
     /**
@@ -31,7 +40,12 @@ class CommentController extends Controller
     public function store(AddCommentRequest $request)
     {
         $validated = $request->validated();
-        $validated['user_id'] =1;
+        $validated['user_id'] = Auth::guard('customer')->id();
+        $validated['food_id'] = Cart::with('foods')
+                                ->where('id' , $request->cart_id)
+                                ->pluck('food_id')
+                                ->first();
+        $validated['food_id'] =
         Comment::query()->create($validated);
         return response()->json([
             'msg'=>__('response.comment_created_successfully')

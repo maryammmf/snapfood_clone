@@ -41,6 +41,7 @@ class UserCartController extends Controller
 
 //        dd($validated);
         $cart = Cart::query()->create($validated);
+        $cart->foods()->attach($request->food_id);
         return response()->json([
             'msg:' => __('response.cart_store_successfully'),
             'cart_id' => $cart->id,
