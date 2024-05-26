@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\user\AddCommentRequest;
 use App\Http\Resources\CommentIndexResource;
+use App\Models\Order;
 use App\Models\User\Cart;
 use App\Models\User\Comment;
 use Illuminate\Http\Request;
@@ -55,9 +56,13 @@ class CommentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(int $orderId)
     {
-        //
+
+        $cartId = Order::query()->where('id' , $orderId)->pluck('cart_id');
+        $comments = Comment::query()->where('cart_id' , $cartId)->paginate(2);
+//        dd($cartId , $comments);
+        return view('panel-pages.seller.comments.index' , compact('comments'));
     }
 
     /**

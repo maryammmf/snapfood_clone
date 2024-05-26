@@ -4,11 +4,13 @@ use App\Http\Controllers\seller\FindFoodController;
 use App\Http\Controllers\seller\FoodController;
 use App\Http\Controllers\seller\OrderController;
 use App\Http\Controllers\seller\SellerAuthController;
+use App\Http\Controllers\seller\SellerCommentController;
+use App\Http\Controllers\User\CommentController;
 use Illuminate\Support\Facades\Route;
 
 
 
-//seller register and login and logout
+//seller register and login and logout ---------------------
 Route::prefix('auth')
     ->controller(SellerAuthController::class)
     ->group(function (){
@@ -18,12 +20,10 @@ Route::prefix('auth')
         Route::get('/' , 'showRegister')->name('show');
         Route::post('/' , 'submitRegister')->name('check');
     });
-
     Route::prefix('seller/login')->name('seller.login.')->group(function(){
         Route::get('/' , 'showLogin')->name('show');
         Route::post('/' , 'submitLogin')->name('check');
     });
-
     Route::get('/seller' , 'logout')->name('seller.logout');
 });
 
@@ -37,7 +37,6 @@ Route::get('panel_seller' , [OrderController::class , 'progressOrders'])
 
 
 //foods crud -------------------------
-
 Route::resource('panel_seller/foods' , FoodController::class)
     ->middleware(['auth:seller' , 'register.restaurant'])
     ->except('show' , 'destroy');
@@ -48,7 +47,7 @@ Route::delete('panel_seller/foods' , [FoodController::class ,'destroy'])
 
 
 
-//seller find foods with name or category
+//seller find foods with name or category -------------------------
 Route::prefix('panel_seller/foods/find')
     ->controller(FindFoodController::class)
     ->middleware(['auth:seller' , 'register.restaurant'])
@@ -58,8 +57,14 @@ Route::prefix('panel_seller/foods/find')
 });
 
 
-//----- orders -------------- orders -----------------------
+// orders -------------------------
 Route::get('panel_seller/orders' , [OrderController::class , 'index'])->middleware(['auth:seller' , 'register.restaurant'])
     ->name('order.index');
 Route::post('panel_seller/{orderId}' , [OrderController::class , 'changeStatus'])->middleware(['auth:seller' , 'register.restaurant'])
     ->name('order.changeStatus');
+
+
+// comment -------------------------
+Route::get('panel_seller/comment/{orderId}' , [CommentController::class , 'show'])->middleware(['auth:seller' , 'register.restaurant'])->name('comment.show');
+
+Route::get('panel_seller/comment/{commentId}' , [SellerCommentController::class , 'response'])->middleware(['auth:seller' , 'register.restaurant'])->name('comment.response');

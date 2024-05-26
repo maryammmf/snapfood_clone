@@ -20,10 +20,12 @@ return new class extends Migration
             $table->id();
             $table->string('message');
             $table->string('score');
-//            $table->string('cart_id');
             $table->foreignIdFor(Cart::class)->constrained()->onDelete('cascade');
             $table->foreignIdFor(User::class)->constrained()->onDelete('cascade');
             $table->foreignIdFor(Food::class)->constrained()->onDelete('cascade');
+            $table->string('response')->nullable();
+            $table->string('status')->default(false);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

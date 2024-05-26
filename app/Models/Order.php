@@ -40,9 +40,9 @@ class Order extends Model
     }
 
 
-    public function carts()
+    public function cart()
     {
-        return $this->hasMany(Cart::class);
+        return $this->belongsTo(Cart::class);
     }
 
     public function scopeUpdateStatus($query , $orderId , $status)

@@ -28,31 +28,52 @@
 </head>
 <body>
 
-<h2>سفارشات</h2>
+<h2>نظرات</h2>
 <div class="col-lg-12 grid-margin stretch-card m">
     <div class="card">
         <div class="card-body" style="margin-right: 350px; margin-top: 100px">
-            <h4 class="card-title ">نمایس تمام سفارش ها</h4>
+            <h4 class="card-title ">نمایس تمام نظرات این سفارش</h4>
             <div class="table-responsive">
                 <table class="table table-striped mt-3">
                     <tr>
-                        <th>شماره سفارش</th>
-                        <th>وضعیت سفارش</th>
-                        <th>قیمت</th>
-                        <th>تاریخ ثبت</th>
-                        <th>نظرات</th>
+                        <th>کاربر</th>
+                        <th>امتیاز</th>
+                        <th>متن پیام</th>
+                        <th>پاسخ</th>
+                        <th>تاریخ ثبت نظر</th>
+                        <th>ارسال پاسخ</th>
+                        <th>وضعیت نظر</th>
+                        <th>درخواست حذف</th>
                     </tr>
-                    @foreach($orders as $order)
+                    @foreach($comments as $comment)
                         <tr>
-                            <td>{{$order->id}}</td>
-                            <td>{{$order->status}}</td>
-                            <td>{{$order->price}}</td>
-                            <td>{{$order->created_at}}</td>
-                            <td><a href="{{ route('comment.show' , $order->id) }}">نمایش نظرات</a></td>
+                            <td>{{$comment->id}}</td>
+                            <td>{{$comment->score}}</td>
+                            <td>{{$comment->message}}</td>
+                            <td>{{$comment->response}}</td>
+                            <td>{{$comment->created_at}}</td>
+                            <td>
+                                <form action="{{ route('comment.response' ,$comment->id) }}">
+                                        <input type="text" name="message" placeholder="پاسخ خود را اینجا بنویسید">
+                                        <input type="submit" value="ارسال">
+                                </form>
+                            </td>
+
+                            <td>
+                                <form action="">
+                                    <input type="submit" value="تایید نظر">
+                                </form>
+                            </td>
+
+                            <td>
+                                <form action="">
+                                    <input type="submit" value="درخواست حذف نظر">
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
                 </table>
-                {{$orders->links()}}
+                {{$comments->links()}}
             </div>
         </div>
     </div>
