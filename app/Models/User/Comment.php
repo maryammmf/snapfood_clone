@@ -36,5 +36,10 @@ class Comment extends Authenticatable
         return $query->where('user_id' , Auth::guard('customer')->id())->whereIn('cart_id' , $cartId );
     }
 
+    public function scopeCommentByCartId($query , $cartId)
+    {
+        return $query->where('cart_id' , $cartId);
+    }
+
 
 }

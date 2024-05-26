@@ -67,4 +67,6 @@ Route::post('panel_seller/{orderId}' , [OrderController::class , 'changeStatus']
 // comment -------------------------
 Route::get('panel_seller/comment/{orderId}' , [CommentController::class , 'show'])->middleware(['auth:seller' , 'register.restaurant'])->name('comment.show');
 
-Route::get('panel_seller/comment/{commentId}' , [SellerCommentController::class , 'response'])->middleware(['auth:seller' , 'register.restaurant'])->name('comment.response');
+Route::post('panel_seller/comment/{orderId}' , [SellerCommentController::class , 'response'])->middleware(['auth:seller' , 'register.restaurant'])->name('comment.response');
+
+Route::post('panel_seller/comment' , [SellerCommentController::class , 'approve'])->middleware(['auth:seller' , 'register.restaurant'])->name('comment.approve');

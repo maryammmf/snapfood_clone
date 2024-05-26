@@ -55,6 +55,11 @@ class Order extends Model
         return $query->whereIn('status' , ['در حال بررسی', 'در حال آماده سازی' , 'ارسال به مقصد']);
     }
 
+    public function scopeCartIdByOrderId($query , $orderId )
+    {
+        return $query->where('id' , $orderId)->pluck('cart_id');
+    }
+
 
 
 }

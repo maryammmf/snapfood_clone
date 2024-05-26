@@ -58,11 +58,9 @@ class CommentController extends Controller
      */
     public function show(int $orderId)
     {
-
-        $cartId = Order::query()->where('id' , $orderId)->pluck('cart_id');
-        $comments = Comment::query()->where('cart_id' , $cartId)->paginate(2);
-//        dd($cartId , $comments);
-        return view('panel-pages.seller.comments.index' , compact('comments'));
+        $cartId = Order::cartIdByOrderId($orderId);
+        $comments = Comment::commentByCartId($cartId)->paginate(2);
+        return view('panel-pages.seller.comments.index' , compact(['comments' ,'orderId']));
     }
 
     /**

@@ -53,14 +53,16 @@
                             <td>{{$comment->response}}</td>
                             <td>{{$comment->created_at}}</td>
                             <td>
-                                <form action="{{ route('comment.response' ,$comment->id) }}">
+                                <form action="{{ route('comment.response' ,$orderId) }}" method="post">
+                                    @csrf
                                         <input type="text" name="message" placeholder="پاسخ خود را اینجا بنویسید">
                                         <input type="submit" value="ارسال">
                                 </form>
                             </td>
 
                             <td>
-                                <form action="">
+                                <form action="{{ route('comment.approve' , $comment->id) }}" method="post">
+                                    @csrf
                                     <input type="submit" value="تایید نظر">
                                 </form>
                             </td>
