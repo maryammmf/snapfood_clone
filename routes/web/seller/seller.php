@@ -70,3 +70,6 @@ Route::get('panel_seller/comment/{orderId}' , [CommentController::class , 'show'
 Route::post('panel_seller/comment/{orderId}' , [SellerCommentController::class , 'response'])->middleware(['auth:seller' , 'register.restaurant'])->name('comment.response');
 
 Route::post('panel_seller/comment/approve/{commentId}' , [SellerCommentController::class , 'approve'])->middleware(['auth:seller' , 'register.restaurant'])->name('comment.approve');
+
+
+Route::delete('panel_seller/comment/{commentId}' , [SellerCommentController::class , 'delete'])->middleware(['auth:seller' , 'register.restaurant'])->name('comment.delete');

@@ -26,8 +26,9 @@ class SellerCommentController extends Controller
         return redirect()->back();
     }
 
-    public function delete()
+    public function delete(int $commentId)
     {
-
+        Comment::query()->find($commentId)->delete();
+        return redirect()->back();
     }
 }

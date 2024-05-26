@@ -68,7 +68,9 @@
                             </td>
 
                             <td>
-                                <form action="">
+                                <form action="{{ route('comment.delete' , $comment->id) }}" method="post">
+                                    @method('DELETE')
+                                    @csrf
                                     <input type="submit" value="درخواست حذف نظر">
                                 </form>
                             </td>
