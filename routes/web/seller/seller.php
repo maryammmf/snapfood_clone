@@ -69,4 +69,4 @@ Route::get('panel_seller/comment/{orderId}' , [CommentController::class , 'show'
 
 Route::post('panel_seller/comment/{orderId}' , [SellerCommentController::class , 'response'])->middleware(['auth:seller' , 'register.restaurant'])->name('comment.response');
 
-Route::post('panel_seller/comment' , [SellerCommentController::class , 'approve'])->middleware(['auth:seller' , 'register.restaurant'])->name('comment.approve');
+Route::post('panel_seller/comment/approve/{commentId}' , [SellerCommentController::class , 'approve'])->middleware(['auth:seller' , 'register.restaurant'])->name('comment.approve');

@@ -63,7 +63,7 @@
                             <td>
                                 <form action="{{ route('comment.approve' , $comment->id) }}" method="post">
                                     @csrf
-                                    <input type="submit" value="تایید نظر">
+                                    <input type="submit" name="true" value="تایید نظر">
                                 </form>
                             </td>
 

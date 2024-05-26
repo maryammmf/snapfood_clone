@@ -22,8 +22,8 @@ class SellerCommentController extends Controller
 
     public function approve(int $commentId)
     {
-
-        dd($commentId);
+        Comment::query()->find($commentId)->update(['status' => true]);
+        return redirect()->back();
     }
 
     public function delete()

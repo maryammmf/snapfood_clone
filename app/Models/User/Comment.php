@@ -4,6 +4,7 @@ namespace App\Models\User;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -11,14 +12,15 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Comment extends Authenticatable
 {
-    use HasApiTokens , HasFactory;
+    use HasApiTokens , HasFactory , SoftDeletes;
 
     protected $fillable = [
         'cart_id',
         'score',
         'message',
         'user_id',
-        'food_id'
+        'food_id',
+        'status'
     ];
 
     public function user()
