@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 
 class SellerCommentController extends Controller
 {
+
+
     public function response(ResponsToCommentRequest $request , int $orderId)
     {
         $validated = $request->validated();
@@ -26,9 +28,9 @@ class SellerCommentController extends Controller
         return redirect()->back();
     }
 
-    public function delete(int $commentId)
+    public function sendDeleteRequest(int $commentId)
     {
-        Comment::query()->find($commentId)->delete();
+        Comment::query()->find($commentId)->update(['delete_request' => true]);
         return redirect()->back();
     }
 }

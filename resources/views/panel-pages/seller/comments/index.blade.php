@@ -32,7 +32,7 @@
 <div class="col-lg-12 grid-margin stretch-card m">
     <div class="card">
         <div class="card-body" style="margin-right: 350px; margin-top: 100px">
-            <h4 class="card-title ">نمایس تمام نظرات این سفارش</h4>
+            <h4 class="card-title ">نمایش تمام نظرات این سفارش</h4>
             <div class="table-responsive">
                 <table class="table table-striped mt-3">
                     <tr>
@@ -68,8 +68,7 @@
                             </td>
 
                             <td>
-                                <form action="{{ route('comment.delete' , $comment->id) }}" method="post">
-                                    @method('DELETE')
+                                <form action="{{ route('comment.delete.request' , $comment->id) }}" method="post">
                                     @csrf
                                     <input type="submit" value="درخواست حذف نظر">
                                 </form>

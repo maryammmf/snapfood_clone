@@ -80,6 +80,14 @@
         </li>
 
         <li class="nav-item">
+            <a class="nav-link" href="{{ route('order.index') }}">
+                <i class="mdi mdi-comment-account menu-icon"></i>
+                <span class="menu-title">نظرات</span>
+            </a>
+        </li>
+
+
+        <li class="nav-item">
             <a class="nav-link" href="{{route('restaurant.index')}}">
                 <i class="mdi mdi-format-list-bulleted menu-icon"></i>
                 <span class="menu-title">ویرایش اطلاعات رستوران</span>

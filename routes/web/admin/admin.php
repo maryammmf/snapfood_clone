@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminAuthController;
+use App\Http\Controllers\admin\AdminCommentController;
 use App\Http\Controllers\Admin\AdminFoodCategoryController;
 use App\Http\Controllers\Admin\AdminRestaurantCategoryController;
 use App\Http\Controllers\Admin\FoodSellerController;
 use App\Http\Controllers\admin\RestaurantSellerController;
+use App\Http\Controllers\User\CommentController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -61,8 +63,6 @@ Route::resource('panel_admin/category/restaurant' , AdminRestaurantCategoryContr
     ])->except('show');
 
 
-
-
 //---------------------------------- show all food  -----------------------------------------------------
 Route::get('panel_admin/foods' , [FoodSellerController::class , 'index'])
 //    ->middleware('auth:admin')
@@ -74,3 +74,13 @@ Route::get('panel_admin/restaurants' , [RestaurantSellerController::class , 'ind
 //    ->middleware('auth:admin')
     ->name('admin.restaurants.index');
 
+
+//---------------------------------- comment   -----------------------------------------------------
+Route::get('panel_admin/comment' , [AdminCommentController::class , 'index'])
+    ->middleware('auth:admin')
+    ->name('comment.index');
+
+
+Route::get('panel_admin/comment/{commentId}' , [AdminCommentController::class , 'destroy'])
+    ->middleware('auth:admin')
+    ->name('comment.destroy');

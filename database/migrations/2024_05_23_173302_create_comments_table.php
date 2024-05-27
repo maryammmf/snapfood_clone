@@ -25,6 +25,7 @@ return new class extends Migration
             $table->foreignIdFor(Food::class)->constrained()->onDelete('cascade');
             $table->string('response')->nullable();
             $table->string('status')->default(false);
+            $table->string('delete_request')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

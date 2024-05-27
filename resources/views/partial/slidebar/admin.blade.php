@@ -88,6 +88,13 @@
         </li>
 
         <li class="nav-item">
+            <a class="nav-link" href="{{ route('comment.index') }}">
+                <i class="mdi mdi-comment-account menu-icon"></i>
+                <span class="menu-title">نظرات</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
             <a class="nav-link" href="pages/forms/basic_elements.html">
                 <i class="mdi mdi-format-list-bulleted menu-icon"></i>
                 <span class="menu-title">ویرایش حساب کاربری</span>
