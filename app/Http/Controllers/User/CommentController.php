@@ -60,7 +60,7 @@ class CommentController extends Controller
     {
         $cartId = Order::cartIdByOrderId($orderId);
         $comments = Comment::commentByCartId($cartId)->paginate(2);
-        return view('panel-pages.seller.comments.index' , compact(['comments' ,'orderId']));
+        return view('panel-pages.seller.comments.show' , compact(['comments' ,'orderId']));
     }
 
     /**

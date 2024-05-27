@@ -21,7 +21,8 @@ class Comment extends Authenticatable
         'user_id',
         'food_id',
         'status',
-        'delete_request'
+        'delete_request',
+        'response'
     ];
 
     public function user()
