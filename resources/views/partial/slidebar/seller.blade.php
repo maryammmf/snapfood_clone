@@ -80,7 +80,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('order.index') }}">
+            <a class="nav-link" href="{{ route('comment.index') }}">
                 <i class="mdi mdi-comment-account menu-icon"></i>
                 <span class="menu-title">نظرات</span>
             </a>

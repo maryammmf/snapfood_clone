@@ -18,9 +18,10 @@ class CommentController extends Controller
      */
     public function index(int $restaurantId)
     {
+
         $cartId = Cart::checkCartRestaurantId($restaurantId)->pluck('id');
+//        dd($cartId);
         $comment = Comment::filterComment($cartId)->get();
-//        dd($comment->toArray());
         return response()->json([
             'comments' => CommentIndexResource::collection($comment)
         ]);

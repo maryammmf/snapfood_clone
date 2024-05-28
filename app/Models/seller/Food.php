@@ -28,6 +28,8 @@ class Food extends Model
     ];
 //    protected $table = 'food';
 
+
+
     public function carts()
     {
         return $this->belongsToMany(Cart::class);

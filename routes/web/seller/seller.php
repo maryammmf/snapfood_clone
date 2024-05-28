@@ -71,7 +71,14 @@ Route::post('panel_seller/comment/{commentId}' , [SellerCommentController::class
 
 Route::post('panel_seller/comment/approve/{commentId}' , [SellerCommentController::class , 'approve'])->middleware(['auth:seller' , 'register.restaurant'])->name('comment.approve');
 
-
 Route::post('panel_seller/comment/delete/{commentId}' , [SellerCommentController::class , 'sendDeleteRequest'])->middleware(['auth:seller' , 'register.restaurant'])->name('comment.delete.request');
+
+Route::get('panel_seller/comment' , [SellerCommentController::class , 'index'])->middleware(['auth:seller' , 'register.restaurant'])->name('comment.index');
+
+
+Route::get('panel_seller/comment_search' , [SellerCommentController::class , 'search'])
+    ->middleware(['auth:seller' , 'register.restaurant'])
+    ->name('comment.search');
+
 
 
