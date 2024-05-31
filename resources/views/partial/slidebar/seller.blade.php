@@ -60,7 +60,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="pages/charts/chartjs.html">
+            <a class="nav-link" href="{{ route('report.index') }}">
                 <i class="mdi mdi-chart-bar menu-icon"></i>
                 <span class="menu-title">گزارشات</span>
             </a>

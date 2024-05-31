@@ -8,56 +8,56 @@
         </h3>
     </div>
     <div class="row">
-        <div class="col-xl-3 col-lg-12 stretch-card grid-margin">
-            <div class="row">
-                <div class="col-xl-12 col-md-6 stretch-card grid-margin grid-margin-sm-0 pb-sm-3">
-                    <div class="card bg-warning">
-                        <div class="card-body px-3 py-4">
-                            <div class="d-flex justify-content-between align-items-start">
-                                <div class="color-card">
-                                    <p class="mb-0 color-card-head">Sales</p>
-                                    <h2 class="text-white"> $8,753.<span class="h5">00</span>
-                                    </h2>
-                                </div>
-                                <i class="card-icon-indicator mdi mdi-basket bg-inverse-icon-warning"></i>
-                            </div>
-                            <h6 class="text-white">18.33% Since last month</h6>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-12 col-md-6 stretch-card grid-margin grid-margin-sm-0 pb-sm-3">
-                    <div class="card bg-danger">
-                        <div class="card-body px-3 py-4">
-                            <div class="d-flex justify-content-between align-items-start">
-                                <div class="color-card">
-                                    <p class="mb-0 color-card-head">Margin</p>
-                                    <h2 class="text-white"> $5,300.<span class="h5">00</span>
-                                    </h2>
-                                </div>
-                                <i class="card-icon-indicator mdi mdi-cube-outline bg-inverse-icon-danger"></i>
-                            </div>
-                            <h6 class="text-white">13.21% Since last month</h6>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-12 col-md-6 stretch-card grid-margin grid-margin-sm-0 pb-sm-3 pb-lg-0 pb-xl-3">
-                    <div class="card bg-primary">
-                        <div class="card-body px-3 py-4">
-                            <div class="d-flex justify-content-between align-items-start">
-                                <div class="color-card">
-                                    <p class="mb-0 color-card-head">Orders</p>
-                                    <h2 class="text-white"> $1,753.<span class="h5">00</span>
-                                    </h2>
-                                </div>
-                                <i class="card-icon-indicator mdi mdi-briefcase-outline bg-inverse-icon-primary"></i>
-                            </div>
-                            <h6 class="text-white">67.98% Since last month</h6>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-9 stretch-card grid-margin">
+{{--        <div class="col-xl-3 col-lg-12 stretch-card grid-margin">--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-xl-12 col-md-6 stretch-card grid-margin grid-margin-sm-0 pb-sm-3">--}}
+{{--                    <div class="card bg-warning">--}}
+{{--                        <div class="card-body px-3 py-4">--}}
+{{--                            <div class="d-flex justify-content-between align-items-start">--}}
+{{--                                <div class="color-card">--}}
+{{--                                    <p class="mb-0 color-card-head">Sales</p>--}}
+{{--                                    <h2 class="text-white"> $8,753.<span class="h5">00</span>--}}
+{{--                                    </h2>--}}
+{{--                                </div>--}}
+{{--                                <i class="card-icon-indicator mdi mdi-basket bg-inverse-icon-warning"></i>--}}
+{{--                            </div>--}}
+{{--                            <h6 class="text-white">18.33% Since last month</h6>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-xl-12 col-md-6 stretch-card grid-margin grid-margin-sm-0 pb-sm-3">--}}
+{{--                    <div class="card bg-danger">--}}
+{{--                        <div class="card-body px-3 py-4">--}}
+{{--                            <div class="d-flex justify-content-between align-items-start">--}}
+{{--                                <div class="color-card">--}}
+{{--                                    <p class="mb-0 color-card-head">Margin</p>--}}
+{{--                                    <h2 class="text-white"> $5,300.<span class="h5">00</span>--}}
+{{--                                    </h2>--}}
+{{--                                </div>--}}
+{{--                                <i class="card-icon-indicator mdi mdi-cube-outline bg-inverse-icon-danger"></i>--}}
+{{--                            </div>--}}
+{{--                            <h6 class="text-white">13.21% Since last month</h6>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-xl-12 col-md-6 stretch-card grid-margin grid-margin-sm-0 pb-sm-3 pb-lg-0 pb-xl-3">--}}
+{{--                    <div class="card bg-primary">--}}
+{{--                        <div class="card-body px-3 py-4">--}}
+{{--                            <div class="d-flex justify-content-between align-items-start">--}}
+{{--                                <div class="color-card">--}}
+{{--                                    <p class="mb-0 color-card-head">Orders</p>--}}
+{{--                                    <h2 class="text-white"> $1,753.<span class="h5">00</span>--}}
+{{--                                    </h2>--}}
+{{--                                </div>--}}
+{{--                                <i class="card-icon-indicator mdi mdi-briefcase-outline bg-inverse-icon-primary"></i>--}}
+{{--                            </div>--}}
+{{--                            <h6 class="text-white">67.98% Since last month</h6>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+        <div class="col-xl-12 stretch-card grid-margin ">
             <div class="card">
                 <div class="card-body">
                     <div class="row">
@@ -67,8 +67,8 @@
                                     <p class="bg-inverse-icon-warning text-white ">سفارش در حال انجام نداریم فعلا ....</p>
                                 @else
                                 <div class="table-responsive">
-                                    <table class="table table-striped mt-3">
-                                        <tr>
+                                    <table class="table table-striped mt-3 ">
+                                        <tr class="bg-warning">
                                             <th>شماره سفارش</th>
                                             <th>وضعیت سفارش</th>
                                             <th>قیمت</th>

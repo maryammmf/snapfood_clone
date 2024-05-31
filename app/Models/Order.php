@@ -60,6 +60,11 @@ class Order extends Model
         return $query->where('id' , $orderId)->pluck('cart_id');
     }
 
+    public function scopeGetOrderWithStatus($query , $orderStatus )
+    {
+        return $query->where('status' ,$orderStatus);
+    }
+
 
 
 }

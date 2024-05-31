@@ -3,6 +3,7 @@
 use App\Http\Controllers\seller\FindFoodController;
 use App\Http\Controllers\seller\FoodController;
 use App\Http\Controllers\seller\OrderController;
+use App\Http\Controllers\seller\ReportController;
 use App\Http\Controllers\seller\SellerAuthController;
 use App\Http\Controllers\seller\SellerCommentController;
 use App\Http\Controllers\User\CommentController;
@@ -75,10 +76,25 @@ Route::post('panel_seller/comment/delete/{commentId}' , [SellerCommentController
 
 Route::get('panel_seller/comment' , [SellerCommentController::class , 'index'])->middleware(['auth:seller' , 'register.restaurant'])->name('comment.index');
 
-
 Route::get('panel_seller/comment_search' , [SellerCommentController::class , 'search'])
     ->middleware(['auth:seller' , 'register.restaurant'])
     ->name('comment.search');
 
+
+
+// report -------------------------
+Route::get('panel_seller/report' , [ReportController::class , 'index'])
+    ->middleware(['auth:seller' , 'register.restaurant'])
+    ->name('report.index');
+
+
+Route::get('panel_seller/report/week' , [ReportController::class , 'weekReport'])
+    ->middleware(['auth:seller' , 'register.restaurant'])
+    ->name('report.weekReport');
+
+
+Route::get('panel_seller/report/month' , [ReportController::class , 'monthReport'])
+    ->middleware(['auth:seller' , 'register.restaurant'])
+    ->name('report.monthReport');
 
 

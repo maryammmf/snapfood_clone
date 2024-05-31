@@ -5,6 +5,7 @@ namespace App\Http\Controllers\seller;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\seller\Restaurant;
+use App\Models\seller\Seller;
 use App\Models\User\Cart;
 use Illuminate\Http\Request;
 
@@ -39,6 +40,8 @@ class OrderController extends Controller
         $orders = Order::query()->paginate(3);
         return view('panel-pages.seller.orders.index' , compact('orders'));
     }
+
+
 
 
 
